@@ -2,7 +2,7 @@ import 'dart:isolate';
 import 'package:hamdars/domain/entities/transaction.dart';
 
 Future<List<Transaction>> processTransactionsInIsolate(
-  List<Transaction> transactions,
+  final List<Transaction> transactions,
 ) async {
   final receivePort = ReceivePort();
   await Isolate.spawn(
@@ -15,18 +15,18 @@ Future<List<Transaction>> processTransactionsInIsolate(
   return await response.first as List<Transaction>;
 }
 
-void _transactionIsolate(SendPort sendPort) {
+void _transactionIsolate(final SendPort sendPort) {
   final ReceivePort port = ReceivePort();
   sendPort.send(port.sendPort);
 
   port.listen(
-    (dynamic message) {
+    (final dynamic message) {
       final List<Transaction> transactions = message[0] as List<Transaction>;
       final SendPort send = message[1] as SendPort;
 
       // Simulate heavy processing
       final List<Transaction> processedTransactions = transactions.map(
-        (Transaction transaction) {
+        (final Transaction transaction) {
           // Add processing logic here
           return transaction;
         },

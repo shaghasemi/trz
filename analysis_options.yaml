@@ -4,7 +4,7 @@ linter:
   rules:
     avoid_type_to_string: true
     prefer_final_fields: true
-    prefer_relative_imports: true
+    prefer_relative_imports: false
     prefer_final_in_for_each: true
     prefer_final_locals: true
     prefer_final_parameters: true
@@ -63,8 +63,9 @@ linter:
 
 analyzer:
   exclude:
-    - packages/*.**
-    - lib/l10n/*.**
+    - packages/**
+    - lib/generated/**
+    - lib/l10n/**
 
   errors:
     missing_required_param: true

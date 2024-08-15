@@ -24,8 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).settings),
       ),
@@ -33,8 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           children: [
             BlocBuilder<LanguageCubit, LanguageState>(
-              builder: (BuildContext context, LanguageState state) {
-                return ListTile(
+              builder: (final BuildContext context, final LanguageState state) => ListTile(
                   onTap: () {
                     BottomSheetWidget().show(
                       context,
@@ -42,8 +40,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ListView.separated(
                         shrinkWrap: true,
                         itemBuilder: (
-                          BuildContext context,
-                          int index,
+                          final BuildContext context,
+                          final int index,
                         ) =>
                             ListTile(
                           onTap: () {
@@ -55,8 +53,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                         ),
                         separatorBuilder: (
-                          BuildContext context,
-                          int index,
+                          final BuildContext context,
+                          final int index,
                         ) =>
                             DividerWidget().horizontal(),
                         itemCount: AppConstants.languages().length,
@@ -67,12 +65,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     S.of(context).language,
                   ),
                   trailing: Text(cubit.language.name),
-                );
-              },
+                ),
             )
           ],
         ),
       ),
     );
-  }
 }

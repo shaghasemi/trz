@@ -15,21 +15,19 @@ class TransactionState {
   });
 
   TransactionState copyWith({
-    List<Transaction>? transactions,
-    bool? isLoading,
-    String? errorMessage,
-  }) {
-    return TransactionState(
+    final List<Transaction>? transactions,
+    final bool? isLoading,
+    final String? errorMessage,
+  }) => TransactionState(
       transactions: transactions ?? this.transactions,
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
     );
-  }
 }
 
 class TransactionCubit extends Cubit<TransactionState> {
   final TransactionUseCases _useCases;
-  int _page = 0;
+  final int _page = 0;
   static const int _pageSize = 20;
 
   TransactionCubit(this._useCases)
@@ -57,7 +55,7 @@ class TransactionCubit extends Cubit<TransactionState> {
   }*/
 
   Future<void> fetchTransactions({
-    bool isLoadMore = false,
+    final bool isLoadMore = false,
   }) async {
     try {
       if (isLoadMore) {
@@ -84,17 +82,17 @@ class TransactionCubit extends Cubit<TransactionState> {
     }
   }
 
-  Future<void> addTransaction(Transaction transaction) async {
+  Future<void> addTransaction(final Transaction transaction) async {
     await _useCases.addTransaction(transaction);
     fetchTransactions();
   }
 
-  Future<void> updateTransaction(Transaction transaction) async {
+  Future<void> updateTransaction(final Transaction transaction) async {
     await _useCases.updateTransaction(transaction);
     fetchTransactions();
   }
 
-  Future<void> deleteTransaction(int id) async {
+  Future<void> deleteTransaction(final int id) async {
     await _useCases.deleteTransaction(id);
     fetchTransactions();
   }

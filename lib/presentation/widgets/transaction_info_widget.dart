@@ -43,16 +43,16 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
     _dateTimeSelected = _transaction.date.toJalali();
     _dateController.text = _transaction.date.toPersianDate();
     _isIncome = _transaction.isIncome;
-    if (_categories.any((e) => e.id == _transaction.categoryId)) {
+    if (_categories.any((final e) => e.id == _transaction.categoryId)) {
       _selectedCategory = _categories.firstWhere(
-        (e) => e.id == _transaction.categoryId,
+        (final e) => e.id == _transaction.categoryId,
         // orElse: () {},
         // orElse: () => _categories.first,
       );
       if (_selectedCategory!.subcategories
-          .any((e) => e.id == _transaction.subCategoryId)) {
+          .any((final e) => e.id == _transaction.subCategoryId)) {
         _selectedSubcategory = _selectedCategory?.subcategories.firstWhere(
-          (e) => e.id == _transaction.subCategoryId,
+          (final e) => e.id == _transaction.subCategoryId,
         );
       }
     }
@@ -68,8 +68,7 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(final BuildContext context) => Padding(
       padding: const EdgeInsets.all(16.0),
       child: Form(
         key: _formKey,
@@ -81,7 +80,7 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
                 labelText: S.of(context).description,
               ),
               maxLines: 1,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterDescriptionValidation;
                 }
@@ -97,7 +96,7 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
                 FilteringTextInputFormatter.digitsOnly,
               ],
               maxLines: 1,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterAmountValidation;
                 }
@@ -112,7 +111,7 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
               controller: _dateController,
               decoration: InputDecoration(labelText: S.of(context).date),
               keyboardType: TextInputType.text,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterDateValidation;
                 }
@@ -143,20 +142,18 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
               value: _selectedCategory,
               hint: Text(S.of(context).selectCategory),
               items: _categories.map(
-                (category) {
-                  return DropdownMenuItem<Category>(
+                (final category) => DropdownMenuItem<Category>(
                     value: category,
                     child: Text(category.name),
-                  );
-                },
+                  ),
               ).toList(),
-              onChanged: (value) {
+              onChanged: (final value) {
                 setState(() {
                   _selectedCategory = value;
                   _selectedSubcategory = null;
                 });
               },
-              validator: (value) {
+              validator: (final value) {
                 if (value == null) {
                   return S.of(context).selectCategory;
                 }
@@ -167,18 +164,16 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
               DropdownButtonFormField<Subcategory>(
                 value: _selectedSubcategory,
                 hint: Text(S.of(context).selectSubcategory),
-                items: _selectedCategory!.subcategories.map((subcategory) {
-                  return DropdownMenuItem<Subcategory>(
+                items: _selectedCategory!.subcategories.map((final subcategory) => DropdownMenuItem<Subcategory>(
                     value: subcategory,
                     child: Text(subcategory.name),
-                  );
-                }).toList(),
-                onChanged: (value) {
+                  )).toList(),
+                onChanged: (final value) {
                   setState(() {
                     _selectedSubcategory = value;
                   });
                 },
-                validator: (value) {
+                validator: (final value) {
                   if (value == null) {
                     return S.of(context).selectSubcategoryValidation;
                   }
@@ -211,7 +206,6 @@ class _TransactionInfoWidgetState extends State<TransactionInfoWidget> {
         ),
       ),
     );
-  }
 
   Future<void> openCalendar() async {
     final Jalali? dateTimeTemp = await showPersianDatePicker(

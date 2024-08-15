@@ -8,7 +8,7 @@ class TransactionUseCases {
 
   TransactionUseCases(this._repository);
 
-  Future<void> addTransaction(Transaction transaction) {
+  Future<void> addTransaction(final Transaction transaction) {
     final TransactionModel dbTransaction = TransactionModel(
       id: transaction.id,
       description: transaction.description,
@@ -22,12 +22,11 @@ class TransactionUseCases {
   }
 
   Future<List<Transaction>> getTransactions({
-    int page = 0,
-    int pageSize = 20,
-  }) async {
-    return (await _repository.getTransactions())
+    final int page = 0,
+    final int pageSize = 20,
+  }) async => (await _repository.getTransactions())
         .map(
-          (e) => Transaction(
+          (final e) => Transaction(
             id: e.id,
             amount: e.amount,
             date: e.date,
@@ -40,9 +39,8 @@ class TransactionUseCases {
         .toList()
         .reversed
         .toList();
-  }
 
-  Future<void> updateTransaction(Transaction transaction) {
+  Future<void> updateTransaction(final Transaction transaction) {
     final TransactionModel dbTransaction = TransactionModel(
       id: transaction.id,
       description: transaction.description,
@@ -55,13 +53,9 @@ class TransactionUseCases {
     return _repository.updateTransaction(dbTransaction);
   }
 
-  Future<void> deleteTransaction(int id) {
-    return _repository.deleteTransaction(id);
-  }
+  Future<void> deleteTransaction(final int id) => _repository.deleteTransaction(id);
 
-  Future<void> deleteAll() {
-    return _repository.deleteAll();
-  }
+  Future<void> deleteAll() => _repository.deleteAll();
 
   Future<void> addTransactions({
     final int count = 1000,

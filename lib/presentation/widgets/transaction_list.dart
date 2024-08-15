@@ -38,112 +38,109 @@ class _TransactionListWidgetState extends State<TransactionListWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TransactionCubit, TransactionState>(
-      builder: (BuildContext context, TransactionState state) {
-        if (state.transactions.isEmpty) {
-          return Center(child: Text(S.of(context).noTransactions));
-        }
-        return ListView.builder(
-          key: GlobalKey(debugLabel: 'listView'),
-          controller: _scrollController,
-          reverse: false,
-          physics: const BouncingScrollPhysics(),
-          // cacheExtent: 50,
-          itemCount: state.transactions.length,
-          itemBuilder: (BuildContext context, int index) {
-            if (index == state.transactions.length) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            final Transaction transaction = state.transactions[index];
-            return ContextMenuRegion(
-              isEnabled: true,
-              contextMenu: GenericContextMenu(
-                buttonConfigs: [
-                  ContextMenuButtonConfig(
-                    S.of(context).copy,
-                    icon: _menuIconView(AppAssets.copy),
-                    onPressed: () {
-                      Clipboard.setData(
-                        ClipboardData(text: transaction.description),
-                      );
-                      SnackBarWidget().snackBar(
-                        context,
-                        S.of(context).descriptionCopiedToClipboard,
-                      );
-                    },
-                  ),
-                  ContextMenuButtonConfig(
-                    S.of(context).pin,
-                    icon: _menuIconView(AppAssets.pinned),
-                    onPressed: () {},
-                  ),
-                  ContextMenuButtonConfig(
-                    S.of(context).searchInGoogle,
-                    icon: _menuIconView(AppAssets.google),
-                    onPressed: () => context.navTo(
-                      GoogleScreen(
-                        content: transaction.description,
+  Widget build(final BuildContext context) =>
+      BlocBuilder<TransactionCubit, TransactionState>(
+        builder: (final BuildContext context, final TransactionState state) {
+          if (state.transactions.isEmpty) {
+            return Center(child: Text(S.of(context).noTransactions));
+          }
+          return ListView.builder(
+            key: GlobalKey(debugLabel: 'listView'),
+            controller: _scrollController,
+            reverse: false,
+            physics: const BouncingScrollPhysics(),
+            // cacheExtent: 50,
+            itemCount: state.transactions.length,
+            itemBuilder: (final BuildContext context, final int index) {
+              if (index == state.transactions.length) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              final Transaction transaction = state.transactions[index];
+              return ContextMenuRegion(
+                isEnabled: true,
+                contextMenu: GenericContextMenu(
+                  buttonConfigs: [
+                    ContextMenuButtonConfig(
+                      S.of(context).copy,
+                      icon: _menuIconView(AppAssets.copy),
+                      onPressed: () {
+                        Clipboard.setData(
+                          ClipboardData(text: transaction.description),
+                        );
+                        SnackBarWidget().snackBar(
+                          context,
+                          S.of(context).descriptionCopiedToClipboard,
+                        );
+                      },
+                    ),
+                    ContextMenuButtonConfig(
+                      S.of(context).pin,
+                      icon: _menuIconView(AppAssets.pinned),
+                      onPressed: () {},
+                    ),
+                    ContextMenuButtonConfig(
+                      S.of(context).searchInGoogle,
+                      icon: _menuIconView(AppAssets.google),
+                      onPressed: () => context.navTo(
+                        GoogleScreen(
+                          content: transaction.description,
+                        ),
                       ),
                     ),
-                  ),
-                  ContextMenuButtonConfig(
-                    S.of(context).delete,
-                    icon: _menuIconView(AppAssets.delete),
-                    onPressed: () {
-                      context
-                          .read<TransactionCubit>()
-                          .deleteTransaction(transaction.id);
-                    },
-                  ),
-                  ContextMenuButtonConfig(
-                    S.of(context).details,
-                    icon: _menuIconView(AppAssets.info),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              child: ListTile(
-                title: Text(transaction.description),
-                subtitle: Text(
-                  '${transaction.amount} ${S.of(context).toman}',
-                  style: TextStyle(
-                    color: transaction.isIncome ? Colors.green : Colors.red,
-                  ),
-                ),
-                // trailing: Text(transaction.date.toLocal().toPersianDateStr()),
-                trailing: Text(
-                  transaction.date.toLocal().toPersianDate(
-                        showTime: true,
-                      ),
-                ),
-                // onLongPress: () {},
-                onTap: () async {
-                  BottomSheetWidget().show(
-                    context,
-                    S.of(context).add_transaction,
-                    TransactionInfoWidget(
-                      transaction: transaction,
+                    ContextMenuButtonConfig(
+                      S.of(context).delete,
+                      icon: _menuIconView(AppAssets.delete),
+                      onPressed: () {
+                        context
+                            .read<TransactionCubit>()
+                            .deleteTransaction(transaction.id);
+                      },
                     ),
-                  );
-                },
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
+                    ContextMenuButtonConfig(
+                      S.of(context).details,
+                      icon: _menuIconView(AppAssets.info),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                child: ListTile(
+                  title: Text(transaction.description),
+                  subtitle: Text(
+                    '${transaction.amount} ${S.of(context).toman}',
+                    style: TextStyle(
+                      color: transaction.isIncome ? Colors.green : Colors.red,
+                    ),
+                  ),
+                  // trailing: Text(transaction.date.toLocal().toPersianDateStr()),
+                  trailing: Text(
+                    transaction.date.toLocal().toPersianDate(
+                          showTime: true,
+                        ),
+                  ),
+                  // onLongPress: () {},
+                  onTap: () async {
+                    BottomSheetWidget().show(
+                      context,
+                      S.of(context).add_transaction,
+                      TransactionInfoWidget(
+                        transaction: transaction,
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+          );
+        },
+      );
 
-  Widget _menuIconView(String svg) {
-    return SvgPicture.asset(
-      svg,
-      colorFilter: const ColorFilter.mode(
-        Color(0xFF737373),
-        BlendMode.srcIn,
-      ),
-      width: 18,
-      height: 18,
-    );
-  }
+  Widget _menuIconView(final String svg) => SvgPicture.asset(
+        svg,
+        colorFilter: const ColorFilter.mode(
+          Color(0xFF737373),
+          BlendMode.srcIn,
+        ),
+        width: 18,
+        height: 18,
+      );
 }

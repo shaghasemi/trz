@@ -42,155 +42,155 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).add_transaction)),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: _descriptionController,
-                  decoration: InputDecoration(
-                    labelText: S.of(context).description,
-                  ),
-                  maxLines: 1,
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return S.of(context).enterDescriptionValidation;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: _amountController,
-                  decoration: InputDecoration(labelText: S.of(context).amount),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly,
-                  ],
-                  maxLines: 1,
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return S.of(context).enterAmountValidation;
-                    }
-                    if (double.tryParse(value) == null) {
-                      return S.of(context).enterValidNumberValidation;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: _dateController,
-                  decoration: InputDecoration(labelText: S.of(context).date),
-                  keyboardType: TextInputType.text,
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return S.of(context).enterDateValidation;
-                    }
-                    return null;
-                  },
-                  readOnly: true,
-                  enabled: true,
-                  onTap: openCalendar,
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: 140,
-                  height: 40,
-                  child: AppToggleButton(
-                    value: _isIncome,
-                    onChange: (final bool newValue) => setState(
-                      () => _isIncome = !_isIncome,
+  Widget build(final BuildContext context) => Scaffold(
+        appBar: AppBar(title: Text(S.of(context).add_transaction)),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _descriptionController,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).description,
                     ),
-                    iconTrue: Icons.arrow_upward,
-                    iconFalse: Icons.arrow_downward,
-                    textTrue: S.of(context).income,
-                    textFalse: S.of(context).expenditure,
-                    height: 40,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                DropdownButtonFormField<Category>(
-                  value: _selectedCategory,
-                  hint: Text(S.of(context).selectCategory),
-                  items: _categories.map(
-                    (category) {
-                      return DropdownMenuItem<Category>(
-                        value: category,
-                        child: Text(category.name),
-                      );
-                    },
-                  ).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedCategory = value;
-                      _selectedSubcategory = null;
-                    });
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return S.of(context).selectCategory;
-                    }
-                    return null;
-                  },
-                ),
-                if (_selectedCategory != null)
-                  DropdownButtonFormField<Subcategory>(
-                    value: _selectedSubcategory,
-                    hint: Text(S.of(context).selectSubcategory),
-                    items: _selectedCategory!.subcategories.map((subcategory) {
-                      return DropdownMenuItem<Subcategory>(
-                        value: subcategory,
-                        child: Text(subcategory.name),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedSubcategory = value;
-                      });
-                    },
-                    validator: (value) {
-                      if (value == null) {
-                        return S.of(context).selectSubcategoryValidation;
+                    maxLines: 1,
+                    validator: (final String? value) {
+                      if (value == null || value.isEmpty) {
+                        return S.of(context).enterDescriptionValidation;
                       }
                       return null;
                     },
                   ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      final Transaction newTransaction = Transaction(
-                        id: 0,
-                        // ID will be set by the database
-                        description: _descriptionController.text,
-                        amount: int.parse(_amountController.text),
-                        date: dateTimeSelected.toDateTime(),
-                        categoryId: _selectedCategory!.id,
-                        subCategoryId: _selectedSubcategory!.id,
-                        isIncome: _isIncome,
-                      );
-                      context
-                          .read<TransactionCubit>()
-                          .addTransaction(newTransaction);
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: Text(S.of(context).add_transaction),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _amountController,
+                    decoration:
+                        InputDecoration(labelText: S.of(context).amount),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    maxLines: 1,
+                    validator: (final String? value) {
+                      if (value == null || value.isEmpty) {
+                        return S.of(context).enterAmountValidation;
+                      }
+                      if (double.tryParse(value) == null) {
+                        return S.of(context).enterValidNumberValidation;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _dateController,
+                    decoration: InputDecoration(labelText: S.of(context).date),
+                    keyboardType: TextInputType.text,
+                    validator: (final String? value) {
+                      if (value == null || value.isEmpty) {
+                        return S.of(context).enterDateValidation;
+                      }
+                      return null;
+                    },
+                    readOnly: true,
+                    enabled: true,
+                    onTap: openCalendar,
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: 140,
+                    height: 40,
+                    child: AppToggleButton(
+                      value: _isIncome,
+                      onChange: (final bool newValue) => setState(
+                        () => _isIncome = !_isIncome,
+                      ),
+                      iconTrue: Icons.arrow_upward,
+                      iconFalse: Icons.arrow_downward,
+                      textTrue: S.of(context).income,
+                      textFalse: S.of(context).expenditure,
+                      height: 40,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  DropdownButtonFormField<Category>(
+                    value: _selectedCategory,
+                    hint: Text(S.of(context).selectCategory),
+                    items: _categories
+                        .map(
+                          (final category) => DropdownMenuItem<Category>(
+                            value: category,
+                            child: Text(category.name),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (final value) {
+                      setState(() {
+                        _selectedCategory = value;
+                        _selectedSubcategory = null;
+                      });
+                    },
+                    validator: (final value) {
+                      if (value == null) {
+                        return S.of(context).selectCategory;
+                      }
+                      return null;
+                    },
+                  ),
+                  if (_selectedCategory != null)
+                    DropdownButtonFormField<Subcategory>(
+                      value: _selectedSubcategory,
+                      hint: Text(S.of(context).selectSubcategory),
+                      items: _selectedCategory!.subcategories
+                          .map((final subcategory) =>
+                              DropdownMenuItem<Subcategory>(
+                                value: subcategory,
+                                child: Text(subcategory.name),
+                              ))
+                          .toList(),
+                      onChanged: (final value) {
+                        setState(() {
+                          _selectedSubcategory = value;
+                        });
+                      },
+                      validator: (final value) {
+                        if (value == null) {
+                          return S.of(context).selectSubcategoryValidation;
+                        }
+                        return null;
+                      },
+                    ),
+                  const SizedBox(height: 40),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        final Transaction newTransaction = Transaction(
+                          id: 0,
+                          // ID will be set by the database
+                          description: _descriptionController.text,
+                          amount: int.parse(_amountController.text),
+                          date: dateTimeSelected.toDateTime(),
+                          categoryId: _selectedCategory!.id,
+                          subCategoryId: _selectedSubcategory!.id,
+                          isIncome: _isIncome,
+                        );
+                        context
+                            .read<TransactionCubit>()
+                            .addTransaction(newTransaction);
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: Text(S.of(context).add_transaction),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 
   Future<void> openCalendar() async {
     final Jalali? dateTimeTemp = await showPersianDatePicker(

@@ -7,20 +7,20 @@ class TransactionRepository {
   TransactionRepository(this._objectBox);
 
   Future<void> addTransaction(
-    TransactionModel transaction,
+    final TransactionModel transaction,
   ) async {
     await _objectBox.transactionBox.putAsync(transaction);
   }
 
   Future<void> addTransactions(
-    List<TransactionModel> transactions,
+    final List<TransactionModel> transactions,
   ) async {
     await _objectBox.transactionBox.putManyAsync(transactions);
   }
 
   Future<List<TransactionModel>> getTransactions({
-    int page = 0,
-    int pageSize = 20,
+    final int page = 0,
+    final int pageSize = 20,
   }) async {
     return _objectBox.transactionBox
         .query()
@@ -32,13 +32,13 @@ class TransactionRepository {
   }
 
   Future<void> updateTransaction(
-    TransactionModel transaction,
+    final TransactionModel transaction,
   ) async {
     await _objectBox.transactionBox.putAsync(transaction);
   }
 
   Future<void> deleteTransaction(
-    int id,
+    final int id,
   ) async {
     await _objectBox.transactionBox.removeAsync(id);
   }

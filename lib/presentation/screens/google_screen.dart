@@ -25,20 +25,17 @@ class GoogleScreenState extends State<GoogleScreen> {
     await controller.init(
       context: context,
       uri: Uri.parse("https://google.com/search?q=${widget.content}"),
-      setState: (void Function() fn) {},
+      setState: (final void Function() fn) {},
     );
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       // appBar: appBar(),
       body: body(),
     );
-  }
 
-  PreferredSizeWidget appBar() {
-    return AppBar(
+  PreferredSizeWidget appBar() => AppBar(
       centerTitle: true,
       title: const Text('Google Search'),
       leading: IconButton(
@@ -50,11 +47,8 @@ class GoogleScreenState extends State<GoogleScreen> {
         onPressed: () => Navigator.pop(context),
       ),
     );
-  }
 
-  Widget body() {
-    return WebView(
+  Widget body() => WebView(
       controller: controller,
     );
-  }
 }

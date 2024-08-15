@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:hamdars/core/utils/styling/theme/theme.base.dart';
 import 'package:hamdars/data/objectbox/transaction_db.dart';
 import 'package:hamdars/data/repositories/transaction_repository.dart';
@@ -10,9 +12,29 @@ import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/cubit/language/language_cubit.dart';
 import 'package:hamdars/presentation/cubit/transaction_cubit.dart';
 import 'package:hamdars/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+import 'core/utils/http_certificate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      // statusBarColor: primaryLightColorCustomer,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+
+  HttpOverrides.global = CustomHttpOverrides();
+
   final TransactionDB objectBox = await TransactionDB.create();
   final TransactionRepository transactionRepository = TransactionRepository(
     objectBox,
@@ -36,24 +58,27 @@ class MyApp extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        Provider<TransactionUseCases>.value(
-          value: transactionUseCases,
-        ),
-        BlocProvider<TransactionCubit>(
-          create: (BuildContext context) => TransactionCubit(
-            transactionUseCases,
+  Widget build(final BuildContext context) => MultiBlocProvider(
+        providers: [
+          Provider<TransactionUseCases>.value(
+            value: transactionUseCases,
           ),
-        ),
-        BlocProvider<LanguageCubit>(
-          create: (BuildContext context) => LanguageCubit()..initialize(),
-        ),
-      ],
-      child: BlocBuilder<LanguageCubit, LanguageState>(
-        builder: (context, state) {
-          return MaterialApp(
+          BlocProvider<TransactionCubit>(
+            create: (final BuildContext context) => TransactionCubit(
+              transactionUseCases,
+            ),
+          ),
+          BlocProvider<LanguageCubit>(
+            create: (final BuildContext context) =>
+                LanguageCubit()..initialize(),
+          ),
+        ],
+        child: BlocBuilder<LanguageCubit, LanguageState>(
+          builder: (
+            final context,
+            final state,
+          ) =>
+              MaterialApp(
             title: 'Hamed TaxiApps Test',
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
@@ -69,9 +94,7 @@ class MyApp extends StatelessWidget {
             theme: themeBase(
               languageCode: state.language.key,
             ),
-          );
-        },
-      ),
-    );
-  }
+          ),
+        ),
+      );
 }

@@ -4,12 +4,12 @@ import 'package:hamdars/core/utils/styling/color.dart';
 
 class SnackBarWidget {
   ScaffoldFeatureController snackBar(
-    BuildContext context,
-    String message, {
-    SnackBarBehavior behavior = SnackBarBehavior.fixed,
-    SnackBarAction? action,
-    int duration = 4,
-    int maxLines = 3,
+    final BuildContext context,
+    final String message, {
+    final SnackBarBehavior behavior = SnackBarBehavior.fixed,
+    final SnackBarAction? action,
+    final int duration = 4,
+    final int maxLines = 3,
   }) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     return ScaffoldMessenger.of(context).showSnackBar(
@@ -32,10 +32,9 @@ class SnackBarWidget {
   }
 
   Widget snackBarMessage(
-    String message, {
-    int? maxLines = 3,
-  }) {
-    return Directionality(
+    final String message, {
+    final int? maxLines = 3,
+  }) => Directionality(
       textDirection: TextDirection.rtl,
       child: Text(
         message,
@@ -44,21 +43,18 @@ class SnackBarWidget {
         overflow: TextOverflow.ellipsis,
       ),
     );
-  }
 
-  SnackBarAction action(String text, Function action, {Color? color}) {
-    return SnackBarAction(
+  SnackBarAction action(final String text, final Function action, {final Color? color}) => SnackBarAction(
       label: text,
       textColor: color ?? primaryColor,
       onPressed: () => action,
     );
-  }
 
-  void connectionError(BuildContext context) {
+  void connectionError(final BuildContext context) {
     snackBar(context, Strings.networkError);
   }
 
-  void connectionErrorWithAction(BuildContext context, Function action) {
+  void connectionErrorWithAction(final BuildContext context, final Function action) {
     snackBar(
       context,
       Strings.networkError,
@@ -67,7 +63,7 @@ class SnackBarWidget {
     );
   }
 
-  void exceptionError(BuildContext context) {
+  void exceptionError(final BuildContext context) {
     snackBar(
       context,
       Strings.retrieveErrorTry,

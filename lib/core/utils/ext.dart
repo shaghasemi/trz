@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_await_in_return
+
 import 'package:flutter/material.dart';
 
 extension ContextUtil on BuildContext {
@@ -34,7 +36,7 @@ extension ContextUtil on BuildContext {
 
   void hideKeyboard() => FocusScope.of(this).unfocus();
 
-  get width => MediaQuery.of(this).size.width;
+  double get width => MediaQuery.of(this).size.width;
 
-  get height => MediaQuery.of(this).size.height;
+  double get height => MediaQuery.of(this).size.height;
 }

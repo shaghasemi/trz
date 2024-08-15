@@ -13,8 +13,7 @@ class TransactionScreen extends StatelessWidget {
   const TransactionScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ContextMenuOverlay(
+  Widget build(final BuildContext context) => ContextMenuOverlay(
       /*cardBuilder: (context, children) {
         return Container(
           color: Colors.red,
@@ -40,7 +39,7 @@ class TransactionScreen extends StatelessWidget {
                 icon: const Icon(Icons.settings),
               ),
               PopupMenuButton<String>(
-                onSelected: (String result) {
+                onSelected: (final String result) {
                   switch (result) {
                     case 'add_1000':
                       context.read<TransactionCubit>().addTransactionDummy();
@@ -51,7 +50,7 @@ class TransactionScreen extends StatelessWidget {
                     default:
                   }
                 },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                itemBuilder: (final BuildContext context) => <PopupMenuEntry<String>>[
                   PopupMenuItem<String>(
                     value: 'add_1000',
                     child: Text(S.of(context).add1000),
@@ -65,7 +64,7 @@ class TransactionScreen extends StatelessWidget {
             ],
           ),
           body: BlocProvider(
-            create: (BuildContext context) =>
+            create: (final BuildContext context) =>
                 context.read<TransactionCubit>()..fetchTransactions(),
             child: const TransactionListWidget(),
           ),
@@ -86,5 +85,4 @@ class TransactionScreen extends StatelessWidget {
         ),
       ),
     );
-  }
 }

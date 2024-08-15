@@ -44,8 +44,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(final BuildContext context) => Padding(
       padding: const EdgeInsets.all(16.0),
       child: Form(
         key: _formKey,
@@ -58,7 +57,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                 labelText: S.of(context).description,
               ),
               maxLines: 1,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterDescriptionValidation;
                 }
@@ -75,7 +74,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                 FilteringTextInputFormatter.digitsOnly,
               ],
               maxLines: 1,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterAmountValidation;
                 }
@@ -91,7 +90,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
               controller: _dateController,
               decoration: InputDecoration(labelText: S.of(context).date),
               keyboardType: TextInputType.text,
-              validator: (String? value) {
+              validator: (final String? value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).enterDateValidation;
                 }
@@ -124,21 +123,19 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
               value: _selectedCategory,
               hint: Text(S.of(context).selectCategory),
               items: _categories.map(
-                (category) {
-                  return DropdownMenuItem<Category>(
+                (final category) => DropdownMenuItem<Category>(
                     key: Key('ddmiCategory${category.id}'),
                     value: category,
                     child: Text(category.name),
-                  );
-                },
+                  ),
               ).toList(),
-              onChanged: (value) {
+              onChanged: (final value) {
                 setState(() {
                   _selectedCategory = value;
                   _selectedSubcategory = null;
                 });
               },
-              validator: (value) {
+              validator: (final value) {
                 if (value == null) {
                   return S.of(context).selectCategory;
                 }
@@ -151,20 +148,18 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                 value: _selectedSubcategory,
                 hint: Text(S.of(context).selectSubcategory),
                 items: _selectedCategory!.subcategories.map(
-                  (Subcategory subcategory) {
-                    return DropdownMenuItem<Subcategory>(
+                  (final Subcategory subcategory) => DropdownMenuItem<Subcategory>(
                       key: Key('ddmiSubCategory${subcategory.id}'),
                       value: subcategory,
                       child: Text(subcategory.name),
-                    );
-                  },
+                    ),
                 ).toList(),
-                onChanged: (Subcategory? value) {
+                onChanged: (final Subcategory? value) {
                   setState(() {
                     _selectedSubcategory = value;
                   });
                 },
-                validator: (Subcategory? value) {
+                validator: (final Subcategory? value) {
                   if (value == null) {
                     return S.of(context).selectSubcategoryValidation;
                   }
@@ -198,7 +193,6 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
         ),
       ),
     );
-  }
 
   Future<void> openCalendar() async {
     final Jalali? dateTimeTemp = await showPersianDatePicker(

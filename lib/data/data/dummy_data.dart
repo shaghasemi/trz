@@ -7,10 +7,10 @@ class DummyData {
     final int count = 1000,
     final int start = 0,
   }) {
-    Random random = Random.secure();
+    final Random random = Random.secure();
     return List.generate(
       count,
-      (int index) => TransactionModel(
+      (final int index) => TransactionModel(
         description: 'تراکنش شماره ${index + start + 1}',
         date: DateTime.now(),
         amount: random.nextInt(100000),
