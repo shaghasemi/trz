@@ -88,7 +88,7 @@ class MyApp extends StatelessWidget {
               final LanguageState state,
             ) =>
                 MaterialApp(
-              title: 'Hamed TaxiApps Test',
+              title: 'Hamed Test',
               debugShowCheckedModeBanner: false,
               initialRoute: '/',
               routes: routes,
