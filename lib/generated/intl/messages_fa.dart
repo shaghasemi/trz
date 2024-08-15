@@ -21,5 +21,49 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'fa';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add1000":
+            MessageLookupByLibrary.simpleMessage("اضافه کردن 1000 رکورد"),
+        "add_transaction":
+            MessageLookupByLibrary.simpleMessage("افزودن تراکنش"),
+        "amount": MessageLookupByLibrary.simpleMessage("مقدار"),
+        "back": MessageLookupByLibrary.simpleMessage("برگشت"),
+        "changeLanguage": MessageLookupByLibrary.simpleMessage("تغییر زبان"),
+        "copy": MessageLookupByLibrary.simpleMessage("کپی"),
+        "date": MessageLookupByLibrary.simpleMessage("تاریخ"),
+        "delete": MessageLookupByLibrary.simpleMessage("پاک کردن"),
+        "deleteAll": MessageLookupByLibrary.simpleMessage("پاک کردن همه"),
+        "description": MessageLookupByLibrary.simpleMessage("توضیحات"),
+        "descriptionCopiedToClipboard":
+            MessageLookupByLibrary.simpleMessage("مشخصات به کلیپ برد کپی شد"),
+        "details": MessageLookupByLibrary.simpleMessage("جزئیات"),
+        "enterAmountValidation":
+            MessageLookupByLibrary.simpleMessage("لطفا مقدار را وارد کنید"),
+        "enterDateValidation":
+            MessageLookupByLibrary.simpleMessage("لطفا تاریخ را انتخاب کنید"),
+        "enterDescriptionValidation":
+            MessageLookupByLibrary.simpleMessage("لطفا توضیحات را وارد کنید"),
+        "enterValidNumberValidation":
+            MessageLookupByLibrary.simpleMessage("لطفا مقدار صحیحی وارد کنید"),
+        "expenditure": MessageLookupByLibrary.simpleMessage("هزینه"),
+        "income": MessageLookupByLibrary.simpleMessage("درآمد"),
+        "language": MessageLookupByLibrary.simpleMessage("زبان"),
+        "languages": MessageLookupByLibrary.simpleMessage("زبان‌ها"),
+        "noTransactions":
+            MessageLookupByLibrary.simpleMessage("تراکنشی مشاهده نشد"),
+        "pin": MessageLookupByLibrary.simpleMessage("پین کردن"),
+        "searchInGoogle": MessageLookupByLibrary.simpleMessage("جستجو در گوگل"),
+        "select": MessageLookupByLibrary.simpleMessage("انتخاب"),
+        "selectCategory": MessageLookupByLibrary.simpleMessage("انتخاب دسته"),
+        "selectDate": MessageLookupByLibrary.simpleMessage("انتخاب تاریخ"),
+        "selectSubcategory":
+            MessageLookupByLibrary.simpleMessage("انتخاب زیردسته"),
+        "selectSubcategoryValidation":
+            MessageLookupByLibrary.simpleMessage("لطفا زیردسته را انتخاب کنید"),
+        "settings": MessageLookupByLibrary.simpleMessage("تنظیمات"),
+        "toman": MessageLookupByLibrary.simpleMessage("تومان"),
+        "transactions": MessageLookupByLibrary.simpleMessage("تراکنش‌ها"),
+        "updateTransaction":
+            MessageLookupByLibrary.simpleMessage("بروزرسانی تراکنش")
+      };
 }
