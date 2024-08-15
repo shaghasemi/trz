@@ -10,6 +10,8 @@ import 'package:hamdars/presentation/widgets/hamdars_list_bottom_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_widget.dart';
 import 'package:hamdars/presentation/widgets/add_transaction_widget.dart';
 
+import '../widgets/hamdars_list_bottom_widget_4.dart';
+
 class HamDarsScreen extends StatefulWidget {
   const HamDarsScreen({super.key});
 
@@ -80,7 +82,7 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
             child: BlocProvider(
               create: (final BuildContext context) =>
                   context.read<HamDarsCubit>()..loadMain(),
-              child: const HamdarsListBottomWidget(),
+              child: const HamdarsListBottomWidget4(),
             ),
           ),
           floatingActionButtonLocation:

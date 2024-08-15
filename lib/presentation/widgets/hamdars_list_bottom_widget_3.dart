@@ -16,7 +16,7 @@ class HamdarsListBottomWidget extends StatefulWidget {
 
 class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
   // final ScrollController _scrollController = ScrollController();
-  final PageController _scrollController = PageController();
+  final CarouselSliderController _scrollController = CarouselSliderController();
   int selectedIndex = 0;
 
   @override
@@ -41,31 +41,17 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
               child: Text(S.of(context).noTransactions),
             );
           }
-          return PageView.builder(
-            controller: _scrollController,
-            scrollBehavior: const ScrollBehavior(),
-            onPageChanged: (final int index) {
-              debugPrint("Print onPageChanged 30: $index");
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            scrollDirection: Axis.horizontal,
+          return CarouselSlider.builder(
+            carouselController: _scrollController,
             itemBuilder: (
               final BuildContext _,
               final int index,
+              final int pageViewIndex,
             ) =>
                 GestureDetector(
               onTap: () {
                 debugPrint("Print onPageChanged 30: $index");
-                setState(() {
-                  selectedIndex = index;
-                });
-                _scrollController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.ease,
-                );
+                _scrollController.animateToPage(index);
               },
               child: BottomItemWidget(
                 title: state.items[index].name ?? '',
@@ -77,6 +63,36 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
               ),
             ),
             itemCount: state.items.length,
+            options: CarouselOptions(
+              autoPlay: false,
+              enlargeCenterPage: false,
+              viewportFraction: 0.2,
+              aspectRatio: 5,
+              initialPage: 2,
+              enlargeFactor: 0.4,
+              height: 200,
+              clipBehavior: Clip.hardEdge,
+              padEnds: true,
+              onScrolled: (final double? value) {
+                debugPrint("Print onPageChanged 20: $value");
+              },
+              animateToClosest: true,
+              disableCenter: false,
+              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+              enableInfiniteScroll: false,
+              onPageChanged: (
+                final int index,
+                final CarouselPageChangedReason reason,
+              ) {
+                setState(() {
+                  selectedIndex = index;
+                });
+                debugPrint("Print onPageChanged 10: $index");
+                debugPrint("Print onPageChanged 12: $reason");
+              },
+              pageSnapping: true,
+              scrollDirection: Axis.horizontal,
+            ),
           );
         },
       );
