@@ -23,7 +23,7 @@ class BottomItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 1500),
       child: isSelected
           ? Container(
               width: 90,

@@ -6,7 +6,11 @@ import 'package:hamdars/core/widget/bottom_sheet.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/presentation/screens/settings_screen.dart';
+import 'package:hamdars/presentation/widgets/centered_list_view.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_bottom_widget.dart';
+import 'package:hamdars/presentation/widgets/hamdars_list_carousel_widget.dart';
+import 'package:hamdars/presentation/widgets/hamdars_list_custom_widget.dart';
+import 'package:hamdars/presentation/widgets/hamdars_list_page_view_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_widget.dart';
 import 'package:hamdars/presentation/widgets/add_transaction_widget.dart';
 
@@ -82,7 +86,11 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
             child: BlocProvider(
               create: (final BuildContext context) =>
                   context.read<HamDarsCubit>()..loadMain(),
-              child: const HamdarsListBottomWidget(),
+              // child: CenteredListView(),
+              // child: const HamdarsListCustomWidget(),
+              // child: const HamdarsListPageViewWidget(),
+              child: const HamdarsListCarouselWidget(),
+              // child: const HamdarsListBottomWidget(),
             ),
           ),
           floatingActionButtonLocation:

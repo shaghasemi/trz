@@ -6,31 +6,17 @@ import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/widgets/bottom_item_widget.dart';
 
-class HamdarsListBottomWidget extends StatefulWidget {
-  const HamdarsListBottomWidget({super.key});
+class HamdarsListCarouselWidget extends StatefulWidget {
+  const HamdarsListCarouselWidget({super.key});
 
   @override
-  State<HamdarsListBottomWidget> createState() =>
-      _HamdarsListBottomWidgetState();
+  State<HamdarsListCarouselWidget> createState() =>
+      _HamdarsListCarouselWidgetState();
 }
 
-class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
-  // final ScrollController _scrollController = ScrollController();
+class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
   final CarouselSliderController _scrollController = CarouselSliderController();
   int selectedIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    /*_scrollController.addListener(
-      () {
-        if (_scrollController.position.pixels ==
-            _scrollController.position.maxScrollExtent) {
-          context.read<HamDarsCubit>().loadMain();
-        }
-      },
-    );*/
-  }
 
   @override
   Widget build(final BuildContext context) =>
@@ -51,7 +37,12 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
                 GestureDetector(
               onTap: () {
                 debugPrint("Print onPageChanged 30: $index");
-                _scrollController.animateToPage(index);
+                _scrollController.animateToPage(
+                  index,
+                  duration: Duration(milliseconds: 600),
+                  curve: Curves.fastEaseInToSlowEaseOut,
+                );
+                // _scrollController.jumpToPage(index);
               },
               child: BottomItemWidget(
                 title: state.items[index].name ?? '',
@@ -65,11 +56,11 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
             itemCount: state.items.length,
             options: CarouselOptions(
               autoPlay: false,
-              enlargeCenterPage: false,
+              enlargeCenterPage: true,
               viewportFraction: 0.2,
-              aspectRatio: 5,
+              // aspectRatio: 5,
               initialPage: 2,
-              enlargeFactor: 0.4,
+              // enlargeFactor: 0.4,
               height: 200,
               clipBehavior: Clip.hardEdge,
               padEnds: true,
@@ -78,7 +69,7 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
               },
               animateToClosest: true,
               disableCenter: false,
-              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+              // enlargeStrategy: CenterPageEnlargeStrategy.zoom,
               enableInfiniteScroll: false,
               onPageChanged: (
                 final int index,
@@ -90,7 +81,7 @@ class _HamdarsListBottomWidgetState extends State<HamdarsListBottomWidget> {
                 debugPrint("Print onPageChanged 10: $index");
                 debugPrint("Print onPageChanged 12: $reason");
               },
-              pageSnapping: true,
+              pageSnapping: false,
               scrollDirection: Axis.horizontal,
             ),
           );
