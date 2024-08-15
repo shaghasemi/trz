@@ -4,7 +4,7 @@ import 'package:hamdars/domain/entities/transaction.dart';
 Future<List<Transaction>> processTransactionsInIsolate(
   final List<Transaction> transactions,
 ) async {
-  final receivePort = ReceivePort();
+  final ReceivePort receivePort = ReceivePort();
   await Isolate.spawn(
     _transactionIsolate,
     receivePort.sendPort,

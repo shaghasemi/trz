@@ -60,7 +60,7 @@ class BottomSheetWidget {
           topRight: Radius.circular(28),
         ),
       ),
-      builder: (final context) => PopScope(
+      builder: (final BuildContext context) => PopScope(
         onPopInvoked: (final bool didPop) async => Future(() => true),
         child: Directionality(
           textDirection: TextDirection.rtl,

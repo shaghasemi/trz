@@ -66,6 +66,7 @@ analyzer:
     - packages/**
     - lib/generated/**
     - lib/l10n/**
+    - lib/data/objectbox/**
 
   errors:
     missing_required_param: true

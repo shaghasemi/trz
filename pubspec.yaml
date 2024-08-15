@@ -42,14 +42,16 @@ dependencies:
 
   #  Utils
   intl: ^0.19.0
+  flutter_screenutil: ^5.9.3
+  url_strategy: ^0.3.0
+  get_it: ^7.7.0
+  url_launcher: ^6.3.0
 
   #  Hot Push
   shorebird_code_push: ^1.1.4
 
+#  Test
   flutter_gherkin: ^2.0.0
-  get_it: ^7.7.0
-  url_strategy: ^0.3.0
-  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +61,6 @@ dev_dependencies:
   #  Generators
   build_runner: ^2.4.12
   objectbox_generator: ^4.0.2
-  build_config: ^1.1.1
 
   #  Tests
   flutter_driver:
@@ -68,16 +69,16 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
 
+objectbox:
+  output_dir: data/objectbox/generated
+
 flutter:
-#  generate: true
   uses-material-design: true
 
   assets:
     - assets/fonts/
     - assets/svg/
     - shorebird.yaml
-    - build.yaml
-  #    - shorebird.yaml
 
   fonts:
     - family: openSans

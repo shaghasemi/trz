@@ -21,15 +21,13 @@ class TransactionRepository {
   Future<List<TransactionModel>> getTransactions({
     final int page = 0,
     final int pageSize = 20,
-  }) async {
-    return _objectBox.transactionBox
+  }) async => _objectBox.transactionBox
         .query()
         //TODO
         // .offset(page * pageSize)
         // .limit(pageSize)
         .build()
         .find();
-  }
 
   Future<void> updateTransaction(
     final TransactionModel transaction,
