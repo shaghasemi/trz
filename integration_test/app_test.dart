@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hamdars/core/utils/utils.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:hamdars/data/objectbox/transaction_db.dart';
 import 'package:hamdars/data/repositories/transaction_repository.dart';
@@ -20,7 +21,7 @@ void main() async {
     () {
       testWidgets(
         'Tap on the floating action button to add a transaction',
-        (WidgetTester tester) async {
+        (final WidgetTester tester) async {
           await tester.pumpWidget(MyApp(transactionUseCases));
           await waitUntil();
           final Finder fab = find.byKey(
@@ -64,7 +65,7 @@ void main() async {
           final Finder addButton = find.byKey(const Key('addButton'));
           await tester.tap(addButton);
           await tester.pumpAndSettle();
-          await waitUntil(duration: const Duration(seconds: 2));
+          await waitUntil(milliseconds: 2000);
 
           final Finder listView = find.byType(ListView);
           expect(listView, findsOneWidget);
@@ -87,10 +88,3 @@ void main() async {
     },
   );
 }
-
-Future<void> waitUntil({
-  final Duration? duration,
-}) async =>
-    await Future.delayed(
-      duration ?? const Duration(milliseconds: 800),
-    );

@@ -49,6 +49,7 @@ dependencies:
   flutter_gherkin: ^2.0.0
   get_it: ^7.7.0
   url_strategy: ^0.3.0
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
