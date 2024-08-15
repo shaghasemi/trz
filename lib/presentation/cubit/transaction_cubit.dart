@@ -62,7 +62,7 @@ class TransactionCubit extends Cubit<TransactionState> {
         emit(state.copyWith(isLoading: true));
       }
 
-      final List<Transaction> transactions = await _useCases.getTransactions(
+      final List<Transaction> transactions = await _useCases.loadMain(
         page: _page,
         pageSize: _pageSize,
       );

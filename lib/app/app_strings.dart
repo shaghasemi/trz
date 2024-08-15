@@ -1,4 +1,4 @@
-class Strings {
+class AppStrings {
   bool convertStrToBool(final String value) =>
       value.toString().toLowerCase() == 'true';
 

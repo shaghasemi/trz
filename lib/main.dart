@@ -7,11 +7,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hamdars/app/app_size.dart';
 import 'package:hamdars/core/utils/http_certificate.dart';
+import 'package:hamdars/core/utils/service_locator.dart';
 import 'package:hamdars/core/utils/styling/theme/theme.base.dart';
 import 'package:hamdars/data/objectbox/transaction_db.dart';
 import 'package:hamdars/data/repositories/transaction_repository.dart';
 import 'package:hamdars/domain/use_cases/transaction_use_cases.dart';
 import 'package:hamdars/generated/l10n.dart';
+import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/presentation/cubit/language/language_cubit.dart';
 import 'package:hamdars/presentation/cubit/transaction_cubit.dart';
 import 'package:hamdars/routes.dart';
@@ -21,6 +23,7 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
+  setupLocator();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       // statusBarColor: primaryLightColorCustomer,
@@ -72,6 +75,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<LanguageCubit>(
             create: (final BuildContext context) =>
                 LanguageCubit()..initialize(),
+          ),
+          BlocProvider<HamDarsCubit>(
+            create: (final BuildContext context) => HamDarsCubit()/*..loadMain()*/,
           ),
         ],
         child: ScreenUtilInit(

@@ -21,7 +21,7 @@ class TransactionUseCases {
     return _repository.addTransaction(dbTransaction);
   }
 
-  Future<List<Transaction>> getTransactions({
+  Future<List<Transaction>> loadMain({
     final int page = 0,
     final int pageSize = 20,
   }) async => (await _repository.getTransactions())

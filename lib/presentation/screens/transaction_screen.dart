@@ -6,7 +6,7 @@ import 'package:hamdars/core/widget/bottom_sheet.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/cubit/transaction_cubit.dart';
 import 'package:hamdars/presentation/screens/settings_screen.dart';
-import 'package:hamdars/presentation/widgets/transaction_list.dart';
+import 'package:hamdars/presentation/widgets/transaction_list_widget.dart';
 import 'package:hamdars/presentation/widgets/add_transaction_widget.dart';
 
 class TransactionScreen extends StatelessWidget {

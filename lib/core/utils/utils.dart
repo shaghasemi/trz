@@ -139,25 +139,6 @@ class Utils {
     }
   }
 
-  static bool hasCurrentTrip() {
-    // return Get.isRegistered<TripController>();
-    return false;
-  }
-
-  static String mapLanguage(final Locale? locale) {
-    late String language;
-
-    if (locale?.languageCode == 'en') {
-      language = 'name_en';
-    } else if (locale?.languageCode == 'ar') {
-      language = 'name_ar';
-    } else {
-      language = 'name';
-    }
-
-    return language;
-  }
-
   static String fontFamily(final Locale? locale) {
     late String font;
 
@@ -170,15 +151,6 @@ class Utils {
     }
 
     return font;
-  }
-
-  static Future<void> enableLocation() async {
-    try {
-      await const MethodChannel('tikUpRequestLocation')
-          .invokeMethod('requestLocation');
-    } on PlatformException catch (error) {
-      debugPrint('enableLocation exception: $error');
-    }
   }
 
   static final TextInputFormatter digitsOnlyWithFarsi =
@@ -201,7 +173,7 @@ class Utils {
       // ignore: unnecessary_raw_strings
       FilteringTextInputFormatter.allow(
     RegExp(
-      r'[a-zA-Z ]',
+      '[a-zA-Z ]',
     ),
   );
 

@@ -51,14 +51,14 @@ class SnackBarWidget {
     );
 
   void connectionError(final BuildContext context) {
-    snackBar(context, Strings.networkError);
+    snackBar(context, AppStrings.networkError);
   }
 
   void connectionErrorWithAction(final BuildContext context, final Function action) {
     snackBar(
       context,
-      Strings.networkError,
-      action: SnackBarWidget().action(Strings.retry, action),
+      AppStrings.networkError,
+      action: SnackBarWidget().action(AppStrings.retry, action),
       duration: 3600,
     );
   }
@@ -66,7 +66,7 @@ class SnackBarWidget {
   void exceptionError(final BuildContext context) {
     snackBar(
       context,
-      Strings.retrieveErrorTry,
+      AppStrings.retrieveErrorTry,
     );
   }
 }

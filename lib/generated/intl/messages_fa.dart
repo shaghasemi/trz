@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterValidNumberValidation":
             MessageLookupByLibrary.simpleMessage("لطفا مقدار صحیحی وارد کنید"),
         "expenditure": MessageLookupByLibrary.simpleMessage("هزینه"),
+        "hamdars": MessageLookupByLibrary.simpleMessage("هم‌درس"),
         "income": MessageLookupByLibrary.simpleMessage("درآمد"),
         "language": MessageLookupByLibrary.simpleMessage("زبان"),
         "languages": MessageLookupByLibrary.simpleMessage("زبان‌ها"),
