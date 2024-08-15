@@ -1,5 +1,4 @@
 import 'package:hamdars/data/models/transaction_model.dart';
-import 'package:hamdars/objectbox.g.dart';
 
 class TransactionDB {
   late final Store _store;
