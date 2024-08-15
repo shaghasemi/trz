@@ -1,6 +1,6 @@
-# hamdars
+# TRZ
 
-HamDars Test Project
+Test Project
 
 ## Getting Started
 
