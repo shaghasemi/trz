@@ -12,6 +12,15 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  #  Internet
+  dio: ^5.4.0
+  connectivity: ^3.0.6
+
+  #  Image
+  cached_network_image: ^3.2.3
+  flutter_svg: ^2.0.10+1
+  flutter_svg_provider: ^1.0.7
+
   #  ِDatabase
   objectbox: ^4.0.1
   objectbox_flutter_libs: ^4.0.1
@@ -22,14 +31,14 @@ dependencies:
   equatable: ^2.0.5
 
   #  View
-  #  persian_datetime_picker:
-  #    path: packages/persian_datetime_picker-2.6.0/
-  persian_datetime_picker: ^2.7.0
+  persian_datetime_picker:
+    path: packages/persian_datetime_picker/
+#  persian_datetime_picker: ^2.7.0
   persian_number_utility: ^1.1.4
-  flutter_svg: ^2.0.10+1
   animated_toggle_switch: ^0.8.2
   context_menus: ^2.0.0+1
   webview_universal: ^0.0.5
+  skeletons: ^0.0.3
 
   #  Utils
   intl: ^0.19.0
@@ -59,6 +68,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/svg/
+    - shorebird.yaml
   #    - shorebird.yaml
 
   fonts:
