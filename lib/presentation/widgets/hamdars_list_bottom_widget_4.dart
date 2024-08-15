@@ -3,6 +3,7 @@ import 'package:curved_carousel/curved_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hamdars/domain/entities/hamdars.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/widgets/bottom_item_widget.dart';
@@ -16,7 +17,7 @@ class HamdarsListBottomWidget4 extends StatefulWidget {
 }
 
 class _HamdarsListBottomWidget4State extends State<HamdarsListBottomWidget4> {
-  final CarouselSliderController _pageController = CarouselSliderController();
+  final CarouselController _pageController = CarouselController();
   int selectedIndex = 0;
 
   @override
@@ -42,17 +43,36 @@ class _HamdarsListBottomWidget4State extends State<HamdarsListBottomWidget4> {
             );
           }
           return CarouselSlider.builder(
-            carouselController: _pageController,
+            // carouselController: _pageController,
+            options: CarouselOptions(
+              viewportFraction: 0.7,
+              enableInfiniteScroll: true,
+              autoPlay: false,
+              aspectRatio: 2.0,
+              onPageChanged: (
+                final int index,
+                final CarouselPageChangedReason reason,
+              ) {
+                debugPrint("Print Carousel 20: $index");
+                debugPrint("Print Carousel 20: $reason");
+                // Handle page change if needed
+              },
+            ),
             itemCount: state.items.length,
-            itemBuilder: (context, index, int pageIndex) {
-              final item = state.items[index];
+            itemBuilder: (
+              final BuildContext context,
+              final int index,
+              final int pageIndex,
+            ) {
+              final Hamdars item = state.items[index];
               return AnimatedBuilder(
                 animation: _pageController,
-                builder: (context, child) {
+                builder: (final context, final child) {
                   double scale = 1.0;
                   double opacity = 1.0;
                   if (_pageController.hasClients) {
-                    double page = _pageController.page ?? 0;
+                    // double page = _pageController.page ?? 0;
+                    double page = _pageController.offset ?? 0;
                     scale = (1 - (page - index).abs() * 0.3).clamp(0.7, 1.0);
                     opacity = (1 - (page - index).abs() * 0.5).clamp(0.5, 1.0);
                   }
@@ -69,11 +89,15 @@ class _HamdarsListBottomWidget4State extends State<HamdarsListBottomWidget4> {
                               item.unitIcon ?? '',
                               width: 80,
                             ),
-                            Text(item.name ?? '',
-                                style: TextStyle(fontSize: 18.0)),
+                            Text(
+                              item.name ?? '',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
                             SizedBox(height: 8.0),
-                            Text(item.sumUserStudy.toString(),
-                                textAlign: TextAlign.center),
+                            Text(
+                              item.sumUserStudy.toString(),
+                              textAlign: TextAlign.center,
+                            ),
                           ],
                         ),
                       ),

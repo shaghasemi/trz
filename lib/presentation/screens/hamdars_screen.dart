@@ -82,7 +82,7 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
             child: BlocProvider(
               create: (final BuildContext context) =>
                   context.read<HamDarsCubit>()..loadMain(),
-              child: const HamdarsListBottomWidget4(),
+              child: const HamdarsListBottomWidget(),
             ),
           ),
           floatingActionButtonLocation:
