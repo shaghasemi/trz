@@ -18,6 +18,13 @@ class HamDarsUseCases {
                   e.hamdarsUserCurrentUnitLevelPoint,
               hamdarsUserMaxUnitLevelPoint: e.hamdarsUserMaxUnitLevelPoint,
               hamdarsUserMinUnitLevelPoint: e.hamdarsUserMinUnitLevelPoint,
+              progress: e.hamdarsUserCurrentUnitLevelPoint != null &&
+                      e.hamdarsUserMaxUnitLevelPoint != null &&
+                      e.hamdarsUserMinUnitLevelPoint != null
+                  ? (e.hamdarsUserCurrentUnitLevelPoint! /
+                      (e.hamdarsUserMaxUnitLevelPoint! -
+                          e.hamdarsUserMinUnitLevelPoint!))
+                  : 0,
               hamdarsQUnitLearningContentDtos:
                   List<HamdarsQUnitLearningContentDtos>.generate(
                 e.hamdarsQUnitLearningContentDtos?.length ?? 0,
@@ -38,7 +45,9 @@ class HamDarsUseCases {
               ),
             ),
           )
-          .toList() /*
+          .toList()
+
+      /*
       .reversed
       .toList()*/
       ;

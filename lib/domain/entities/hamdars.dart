@@ -19,6 +19,7 @@ class Hamdars {
     this.hamdarsUserCurrentUnitLevelPoint,
     this.hamdarsUserMaxUnitLevelPoint,
     this.hamdarsUserMinUnitLevelPoint,
+    this.progress,
     this.hamdarsQUnitLearningContentDtos,
   });
 
@@ -43,23 +44,26 @@ class Hamdars {
   String? id;
   String? name;
   String? unitIcon;
-  num? sumUserStudy;
-  num? hamdarsUserUnitLevelIndex;
+  int? sumUserStudy;
+  int? hamdarsUserUnitLevelIndex;
   num? hamdarsUserCurrentUnitLevelPoint;
   num? hamdarsUserMaxUnitLevelPoint;
   num? hamdarsUserMinUnitLevelPoint;
+  num? progress;
   List<HamdarsQUnitLearningContentDtos>? hamdarsQUnitLearningContentDtos;
 
   Hamdars copyWith({
     final String? id,
     final String? name,
     final String? unitIcon,
-    final num? sumUserStudy,
-    final num? hamdarsUserUnitLevelIndex,
+    final int? sumUserStudy,
+    final int? hamdarsUserUnitLevelIndex,
     final num? hamdarsUserCurrentUnitLevelPoint,
     final num? hamdarsUserMaxUnitLevelPoint,
     final num? hamdarsUserMinUnitLevelPoint,
-    final List<HamdarsQUnitLearningContentDtos>? hamdarsQUnitLearningContentDtos,
+    final num? progress,
+    final List<HamdarsQUnitLearningContentDtos>?
+        hamdarsQUnitLearningContentDtos,
   }) =>
       Hamdars(
         id: id ?? this.id,
@@ -74,6 +78,7 @@ class Hamdars {
             hamdarsUserMaxUnitLevelPoint ?? this.hamdarsUserMaxUnitLevelPoint,
         hamdarsUserMinUnitLevelPoint:
             hamdarsUserMinUnitLevelPoint ?? this.hamdarsUserMinUnitLevelPoint,
+        progress: progress ?? this.progress,
         hamdarsQUnitLearningContentDtos: hamdarsQUnitLearningContentDtos ??
             this.hamdarsQUnitLearningContentDtos,
       );
@@ -89,8 +94,9 @@ class Hamdars {
     map['hamdarsUserMaxUnitLevelPoint'] = hamdarsUserMaxUnitLevelPoint;
     map['hamdarsUserMinUnitLevelPoint'] = hamdarsUserMinUnitLevelPoint;
     if (hamdarsQUnitLearningContentDtos != null) {
-      map['hamdarsQUnitLearningContentDtos'] =
-          hamdarsQUnitLearningContentDtos?.map((final v) => v.toJson()).toList();
+      map['hamdarsQUnitLearningContentDtos'] = hamdarsQUnitLearningContentDtos
+          ?.map((final v) => v.toJson())
+          .toList();
     }
     return map;
   }

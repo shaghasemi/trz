@@ -4,8 +4,8 @@ class HamDarsModel {
   String? id;
   String? name;
   String? unitIcon;
-  num? sumUserStudy;
-  num? hamdarsUserUnitLevelIndex;
+  int? sumUserStudy;
+  int? hamdarsUserUnitLevelIndex;
   num? hamdarsUserCurrentUnitLevelPoint;
   num? hamdarsUserMaxUnitLevelPoint;
   num? hamdarsUserMinUnitLevelPoint;
