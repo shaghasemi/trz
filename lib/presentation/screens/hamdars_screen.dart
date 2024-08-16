@@ -80,8 +80,8 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
             child: const HamdarsListWidget(),
           ),
           bottomSheet: Container(
-            color: Colors.blue.shade400,
-            height: 200,
+            // color: Colors.blue.shade400,
+            // height: 200,
             width: double.maxFinite,
             child: BlocProvider(
               create: (final BuildContext context) =>

@@ -61,7 +61,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
               // aspectRatio: 5,
               initialPage: 0,
               // enlargeFactor: 0.4,
-              height: 200,
+              height: 181,
               clipBehavior: Clip.hardEdge,
               padEnds: true,
               onScrolled: (final double? value) {
