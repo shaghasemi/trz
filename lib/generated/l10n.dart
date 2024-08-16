@@ -389,6 +389,16 @@ class S {
       args: [],
     );
   }
+
+  /// `سطح`
+  String get level {
+    return Intl.message(
+      'سطح',
+      name: 'level',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

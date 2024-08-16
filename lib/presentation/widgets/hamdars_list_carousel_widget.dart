@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:curved_carousel/curved_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
@@ -39,7 +38,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 debugPrint("Print onPageChanged 30: $index");
                 _scrollController.animateToPage(
                   index,
-                  duration: Duration(milliseconds: 600),
+                  duration: const Duration(milliseconds: 600),
                   curve: Curves.fastEaseInToSlowEaseOut,
                 );
                 // _scrollController.jumpToPage(index);
@@ -51,15 +50,16 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 level: state.items[index].hamdarsUserUnitLevelIndex ?? 0,
                 studyTime: state.items[index].sumUserStudy ?? 0,
                 isSelected: index == selectedIndex,
+                // isSelected: false,
               ),
             ),
             itemCount: state.items.length,
             options: CarouselOptions(
               autoPlay: false,
               enlargeCenterPage: true,
-              viewportFraction: 0.2,
+              viewportFraction: 0.4,
               // aspectRatio: 5,
-              initialPage: 2,
+              initialPage: 0,
               // enlargeFactor: 0.4,
               height: 200,
               clipBehavior: Clip.hardEdge,
@@ -81,7 +81,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 debugPrint("Print onPageChanged 10: $index");
                 debugPrint("Print onPageChanged 12: $reason");
               },
-              pageSnapping: false,
+              pageSnapping: true,
               scrollDirection: Axis.horizontal,
             ),
           );

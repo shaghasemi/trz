@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hamdars/generated/l10n.dart';
 
 class BottomItemWidget extends StatelessWidget {
   final String title;
@@ -21,105 +22,110 @@ class BottomItemWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 1500),
-      child: isSelected
-          ? Container(
-              width: 90,
-              height: 180,
-              child: Column(
-                children: [
-                  _imageView(),
-                  SizedBox(height: 4.h),
-                  Container(
-                    width: 33,
-                    height: 14,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFFFC107),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'سطح 4',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 8,
-                            fontFamily: 'IRANYekanXVFaNum',
-                            fontWeight: FontWeight.w600,
-                            height: 0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Text(
-                    'ادبیات',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: Color(0xFF191919),
-                      fontSize: 12,
-                      fontFamily: 'IRANYekanXVFaNum',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Container(
-                    width: 48,
-                    height: 16,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          '۰۲:۳۰',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: Color(0xFF3F3F3F),
-                            fontSize: 10,
-                            fontFamily: 'IRANYekanXVFaNum',
-                            fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                        const SizedBox(width: 6),
-                        Container(
-                          width: 16,
-                          height: 16,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(),
-                          child: FlutterLogo(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+  Widget build(
+    final BuildContext context,
+  ) =>
+      TweenAnimationBuilder<double>(
+        tween: Tween<double>(
+            begin: isSelected ? 0.8 : 0.6, end: isSelected ? 1.0 : 0.6),
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        builder: (final context, final scale, final child) {
+          return Transform.scale(
+            scale: scale,
+            child: child,
+          );
+        },
+        child: Column(
+          children: [
+            Container(
+              width: isSelected ? 90.w : 60.w,
+              height: isSelected ? 90.h : 60.h,
+              child: SvgPicture.network(
+                iconPath,
+                width: isSelected ? 52.w : 40.w,
+                height: isSelected ? 52.h : 40.h,
               ),
-            )
-          : _imageView(),
-    );
-  }
+            ),
+            if (isSelected) ...[
+              SizedBox(height: 4.h),
+              Container(
+                width: 33.w,
+                height: 14.h,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 4.w,
+                  vertical: 2.h,
+                ),
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFFFC107),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${S.of(context).level} $level",
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Text(
+                title,
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  color: const Color(0xFF191919),
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Container(
+                width: 48.w,
+                height: 16.h,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      _formatStudyTime(studyTime),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: const Color(0xFF3F3F3F),
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(width: 6.w),
+                    Container(
+                      width: 16,
+                      height: 16,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(),
+                      child: const FlutterLogo(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ),
+      );
 
-  Widget _imageView() {
-    return Container(
-      width: 80,
-      height: 80,
-      child: SvgPicture.network(
-        iconPath,
-        width: 52,
-        height: 52,
-      ),
-    );
+  String _formatStudyTime(final int studyTime) {
+    final hours = (studyTime ~/ 60).toString().padLeft(2, '0');
+    final minutes = (studyTime % 60).toString().padLeft(2, '0');
+    return '$hours:$minutes';
   }
 }
