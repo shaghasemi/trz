@@ -82,6 +82,7 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                       child: CircularProgressIndicator(
                         value: widget.progress.toDouble(),
                         color: const Color(0xFF758BEB),
+                        backgroundColor: const Color(0xFFEDEDED),
                         strokeWidth: 7,
                         strokeCap: StrokeCap.round,
                       ),
