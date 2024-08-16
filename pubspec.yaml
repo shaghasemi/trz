@@ -72,6 +72,9 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
 
+#dependency_overrides:
+#  fading_edge_scrollview: 4.1.1
+
 objectbox:
   output_dir: data/objectbox/generated
 

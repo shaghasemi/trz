@@ -32,5 +32,6 @@
   "copy": "کپی",
   "descriptionCopiedToClipboard": "مشخصات به کلیپ برد کپی شد",
   "pin": "پین کردن",
-  "hamdars": "هم\u200cدرس"
+  "hamdars": "هم\u200cدرس",
+  "serverDownDesc": "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید"
 }

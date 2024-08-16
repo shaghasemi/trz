@@ -379,6 +379,16 @@ class S {
       args: [],
     );
   }
+
+  /// `امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید`
+  String get serverDownDesc {
+    return Intl.message(
+      'امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید',
+      name: 'serverDownDesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
