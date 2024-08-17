@@ -29,7 +29,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
                 final BuildContext context,
                 final int index,
               ) =>
-                  SizedBox(height: 6.h),
+                  SizedBox(height: 16.h),
               itemCount: 5,
               itemBuilder: (
                 final BuildContext context,
