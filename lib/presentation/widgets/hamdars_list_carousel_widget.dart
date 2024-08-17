@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hamdars/core/widget/loading_widget.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/widgets/bottom_item_widget.dart';
@@ -22,11 +21,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
   Widget build(final BuildContext context) =>
       BlocBuilder<HamDarsCubit, HamDarsState>(
         builder: (final BuildContext context, final HamDarsState state) {
-          if (state.isLoading) {
-            return Center(
-              child: LoadingWidget().circular(),
-            );
-          } else if (state.items.isEmpty) {
+          if (state.items.isEmpty) {
             return Center(
               child: Text(S.of(context).noTransactions),
             );
@@ -46,14 +41,17 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
               ),
               child: BottomItemWidget(
                 title: state.items[index].name ?? '',
-                progress: state.items[index].progress ?? 0,
+                progress:
+                    state.isLoading ? 0 : state.items[index].progress ?? 0,
                 iconPath: state.items[index].unitIcon ?? '',
                 level: state.items[index].hamdarsUserUnitLevelIndex ?? 0,
                 studyTime: state.items[index].sumUserStudy ?? 0,
-                isSelected: index == state.selectedIndex,
+                isSelected:
+                    index == (state.isLoading ? 0 : state.selectedIndex),
+                isLoading: state.isLoading,
               ),
             ),
-            itemCount: state.items.length,
+            itemCount: state.isLoading ? 6 : state.items.length,
             options: CarouselOptions(
               autoPlay: false,
               enlargeCenterPage: true,

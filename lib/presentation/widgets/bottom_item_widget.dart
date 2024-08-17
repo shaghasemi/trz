@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hamdars/app/app_assets.dart';
 import 'package:hamdars/core/utils/ext.dart';
 import 'package:hamdars/generated/l10n.dart';
+import 'package:skeletons/skeletons.dart';
 
 class BottomItemWidget extends StatefulWidget {
   final String title;
@@ -12,6 +13,7 @@ class BottomItemWidget extends StatefulWidget {
   final int level;
   final int studyTime;
   final bool isSelected;
+  final bool isLoading;
 
   const BottomItemWidget({
     super.key,
@@ -21,6 +23,7 @@ class BottomItemWidget extends StatefulWidget {
     required this.level,
     required this.studyTime,
     required this.isSelected,
+    this.isLoading = false,
   });
 
   @override
@@ -57,7 +60,7 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
           width: 88.w,
           height: 168.h,
           decoration: widget.isSelected
-              ?  ShapeDecoration(
+              ? ShapeDecoration(
                   color: const Color(0x14758BEB),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -88,87 +91,111 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                         strokeCap: StrokeCap.round,
                       ),
                     ),
-                    SvgPicture.network(
-                      widget.iconPath,
-                      width: widget.isSelected ? 73.w : 66.w,
-                      height: widget.isSelected ? 73.w : 66.w,
-                    ),
+                    widget.isLoading
+                        ? Container(
+                            width: widget.isSelected ? 73.w : 66.w,
+                            height: widget.isSelected ? 73.w : 66.w,
+                            margin: EdgeInsets.all(4.w),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFFF0F0F0),
+                            ),
+                          )
+                        : SvgPicture.network(
+                            widget.iconPath,
+                            width: widget.isSelected ? 73.w : 66.w,
+                            height: widget.isSelected ? 73.w : 66.w,
+                            placeholderBuilder: (final BuildContext context) =>
+                                SvgPicture.asset(
+                              AppAssets.fasl,
+                            ),
+                          ),
                   ],
                 ),
               ),
               if (widget.isSelected) ...[
                 SizedBox(height: 4.h),
-                Container(
-                  // width: 33.w,
-                  // height: 14.h,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 4.w,
-                    vertical: 2.h,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFFFC107),
-                    shape: RoundedRectangleBorder(
+                if (widget.isLoading) ...[
+                  SizedBox(height: 8.h),
+                  SkeletonLine(
+                    style: SkeletonLineStyle(
+                      alignment: Alignment.center,
+                      height: 20.h,
+                      width: 68.w,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                   ),
-                  child: Row(
+                ] else ...[
+                  Container(
+                    // width: 33.w,
+                    // height: 14.h,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 4.w,
+                      vertical: 2.h,
+                    ),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFFFC107),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${S.of(context).level} ${widget.level}",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w600,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    widget.title,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: const Color(0xFF1A1A1A),
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w700,
+                      height: 0,
+                    ),
+                  ),
+                  SizedBox(height: 8.h),
+                  Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SvgPicture.asset(
+                        AppAssets.duration,
+                        width: 16,
+                        height: 16,
+                      ),
+                      SizedBox(width: 6.w),
                       Text(
-                        "${S.of(context).level} ${widget.level}",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 8,
-                          fontWeight: FontWeight.w600,
+                        widget.studyTime.toStudyTime(),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: const Color(0xFF404040),
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w700,
                           height: 0,
                         ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  widget.title,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: const Color(0xFF1A1A1A),
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      AppAssets.duration,
-                      width: 16,
-                      height: 16,
-                    ),
-                    SizedBox(width: 6.w),
-                    Text(
-                      widget.studyTime.toStudyTime(),
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: const Color(0xFF404040),
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
-                  ],
-                ),
+                ],
               ],
             ],
           ),
         ),
       );
-
-
 }

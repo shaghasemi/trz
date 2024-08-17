@@ -38,7 +38,9 @@ dependencies:
   animated_toggle_switch: ^0.8.3
   context_menus: ^2.0.0+1
   webview_universal: ^0.0.5
-  skeletons: ^0.0.3
+#  skeletons: ^0.0.3
+  skeletons:
+    path: packages/skeletons/
   curved_carousel: ^0.0.8
   carousel_slider: ^5.0.0
 
