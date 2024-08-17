@@ -16,6 +16,7 @@ class HamdarsListCarouselWidget extends StatefulWidget {
 
 class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
   final CarouselSliderController _scrollController = CarouselSliderController();
+  final Duration duration = const Duration(milliseconds: 300);
 
   @override
   Widget build(final BuildContext context) =>
@@ -24,7 +25,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
           if (state.isLoading) {
             _scrollController.animateToPage(
               0,
-              duration: const Duration(milliseconds: 300),
+              duration: duration,
               curve: Curves.fastEaseInToSlowEaseOut,
             );
           }
@@ -45,7 +46,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 GestureDetector(
               onTap: () => _scrollController.animateToPage(
                 index,
-                duration: const Duration(milliseconds: 300),
+                duration: duration,
                 curve: Curves.fastEaseInToSlowEaseOut,
               ),
               child: BottomItemWidget(
@@ -68,7 +69,7 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
             options: CarouselOptions(
               autoPlay: false,
               enlargeCenterPage: true,
-              viewportFraction: 0.4,
+              viewportFraction: 0.26,
               initialPage: 0,
               height: 181.h,
               clipBehavior: Clip.hardEdge,
