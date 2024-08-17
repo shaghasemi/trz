@@ -429,6 +429,16 @@ class S {
       args: [],
     );
   }
+
+  /// `آیتمی مشاهده نشد`
+  String get noItem {
+    return Intl.message(
+      'آیتمی مشاهده نشد',
+      name: 'noItem',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

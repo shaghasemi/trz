@@ -21,9 +21,9 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
   Widget build(final BuildContext context) =>
       BlocBuilder<HamDarsCubit, HamDarsState>(
         builder: (final BuildContext context, final HamDarsState state) {
-          if (state.items.isEmpty) {
+          if (!state.isLoading && state.items.isEmpty) {
             return Center(
-              child: Text(S.of(context).noTransactions),
+              child: Text(S.of(context).noItem),
             );
           }
           return CarouselSlider.builder(

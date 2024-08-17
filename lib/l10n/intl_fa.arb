@@ -37,5 +37,6 @@
   "level": "سطح",
   "refresh": "رفرش",
   "noSelection": "No Selection",
-  "noItemInThisCategory": "در این دسته آیتمی وجود ندارد"
+  "noItemInThisCategory": "در این دسته آیتمی وجود ندارد",
+  "noItem": "آیتمی مشاهده نشد"
 }

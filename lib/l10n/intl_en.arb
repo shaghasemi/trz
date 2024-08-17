@@ -36,5 +36,6 @@
   "serverDownDesc": "Error retrieving information.Please try again.",
   "level": "Level",
   "noSelection": "No Selection",
-  "noItemInThisCategory": "No item was found in this category"
+  "noItemInThisCategory": "No item was found in this category",
+  "noItem": "آیتمی مشاهده نشد"
 }
