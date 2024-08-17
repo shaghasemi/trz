@@ -18,18 +18,21 @@ class CurvedTopContainer extends StatelessWidget {
   });
 
   @override
-  Widget build(final BuildContext context) => CustomPaint(
-        size: Size(double.infinity, maxHeight),
-        painter: CurvedContainerPainter(
-          minHeight: minHeight,
-          maxHeight: maxHeight,
-          color: color,
-        ),
-        child: Positioned.fill(
-          child: Padding(
-            padding: padding ?? EdgeInsets.zero,
-            child: child,
+  Widget build(final BuildContext context) => SizedBox(
+    height: maxHeight,
+    child: CustomPaint(
+          size: Size(double.infinity, maxHeight),
+          painter: CurvedContainerPainter(
+            minHeight: minHeight,
+            maxHeight: maxHeight,
+            color: color,
+          ),
+          child: Positioned.fill(
+            child: Padding(
+              padding: padding ?? EdgeInsets.zero,
+              child: child,
+            ),
           ),
         ),
-      );
+  );
 }

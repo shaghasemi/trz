@@ -399,6 +399,16 @@ class S {
       args: [],
     );
   }
+
+  /// `refresh`
+  String get refresh {
+    return Intl.message(
+      'رفرش',
+      name: 'refresh',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
