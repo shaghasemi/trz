@@ -8,7 +8,6 @@ class WebDio {
 
 // Set default configs
   static Future<Dio> instance() async {
-    debugPrint("Print WebDio 10:");
     if (_dio == null) {
       _dio = Dio();
       _dio?.options.baseUrl = AppConst.baseUrlMobile;
@@ -37,7 +36,6 @@ class WebClient {
     final bool fullResponse = true,
     final String? customToken,
   }) async {
-    debugPrint("Print WebDio 20:");
     final Dio dio = await WebDio.instance();
     /*if (hasToken) {
       final String token = customToken ??

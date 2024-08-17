@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:hamdars/app/app_constants.dart';
@@ -7,15 +6,11 @@ import 'package:hamdars/domain/entities/language.dart';
 part 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
-  // List<Language> languages = AppConstants.languages();
-  // Language language = AppConstants.languages().first;
   Language language = AppConstants.language();
 
-  // LanguageCubit() : super(LanguageInitial(Language('فارسی', 'fa')));
   LanguageCubit() : super(LanguageInitial(AppConstants.language()));
 
   void initialize() {
-    debugPrint("Print LanguageCubit 20:");
     language = AppConstants.languages().first;
     emit(LanguageChanged(language));
   }

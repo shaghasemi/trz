@@ -132,7 +132,7 @@ class Utils {
 
   static Future<void> moveAppToBackground() async {
     try {
-      await const MethodChannel('tikUpMoveToBackground')
+      await const MethodChannel('moveToBackground')
           .invokeMethod('moveToBack');
     } on PlatformException catch (error) {
       debugPrint('moveAppToBackground exception: $error');
@@ -195,9 +195,10 @@ class Utils {
     }
   }
 
-  static Future<T> handleMethodError<T>(
-      {required final String methodName,
-      required final String exception}) async {
+  static Future<T> handleMethodError<T>({
+    required final String methodName,
+    required final String exception,
+  }) async {
     debugPrint('$methodName exception: $exception');
     return Future.error(exception);
   }

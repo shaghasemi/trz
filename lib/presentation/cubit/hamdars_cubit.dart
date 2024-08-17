@@ -42,19 +42,13 @@ class HamDarsCubit extends Cubit<HamDarsState> {
             items: [],
             isLoading: false,
           ),
-        ) {
-    debugPrint("Print HamDarsCubit 00:");
-  }
+        );
 
   void changeSelection(final int index) {
-    debugPrint("Print HamDarsCubit 50: $index");
-    debugPrint(
-        "Print HamDarsCubit 52: ${state.items[state.selectedIndex!].hamdarsQUnitLearningContentDtos!.length}");
     emit(state.copyWith(selectedIndex: index));
   }
 
   Future<void> loadMain() async {
-    debugPrint("Print HamDarsCubit 10:");
     emit(state.copyWith(isLoading: true));
     try {
       final List<Hamdars> transactions = await _useCases.loadMain();

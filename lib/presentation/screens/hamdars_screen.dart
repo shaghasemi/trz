@@ -19,14 +19,12 @@ class HamDarsScreen extends StatefulWidget {
 class _HamDarsScreenState extends State<HamDarsScreen> {
   @override
   void didChangeDependencies() {
-    debugPrint("Print HamDarsScreen 60");
     setState(() {});
     super.didChangeDependencies();
   }
 
   @override
   void didUpdateWidget(covariant final HamDarsScreen oldWidget) {
-    debugPrint("Print HamDarsScreen 70");
     super.didUpdateWidget(oldWidget);
   }
 

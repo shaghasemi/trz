@@ -15,13 +15,11 @@ class HamdarsListWidget extends StatefulWidget {
 class _HamdarsListWidgetState extends State<HamdarsListWidget> {
   @override
   void didChangeDependencies() {
-    debugPrint("Print HamdarsListWidget 60");
     super.didChangeDependencies();
   }
 
   @override
   void didUpdateWidget(covariant final HamdarsListWidget oldWidget) {
-    debugPrint("Print HamdarsListWidget 70");
     super.didUpdateWidget(oldWidget);
   }
 
