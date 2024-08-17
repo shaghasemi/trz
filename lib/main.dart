@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
                 LanguageCubit()..initialize(),
           ),
           BlocProvider<HamDarsCubit>(
-            create: (final BuildContext context) => HamDarsCubit()/*..loadMain()*/,
+            create: (final BuildContext context) => HamDarsCubit()..loadMain(),
           ),
         ],
         child: ScreenUtilInit(

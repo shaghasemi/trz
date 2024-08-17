@@ -13,21 +13,6 @@ class HamdarsListWidget extends StatefulWidget {
 }
 
 class _HamdarsListWidgetState extends State<HamdarsListWidget> {
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(
-      () {
-        if (_scrollController.position.pixels ==
-            _scrollController.position.maxScrollExtent) {
-          context.read<HamDarsCubit>().loadMain();
-        }
-      },
-    );
-  }
-
   @override
   Widget build(final BuildContext context) =>
       BlocBuilder<HamDarsCubit, HamDarsState>(
@@ -37,7 +22,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
           }
           return ListView.builder(
             key: GlobalKey(debugLabel: 'listView'),
-            controller: _scrollController,
+            // controller: _scrollController,
             reverse: false,
             physics: const BouncingScrollPhysics(),
             // cacheExtent: 50,
@@ -53,15 +38,5 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
             },
           );
         },
-      );
-
-  Widget _menuIconView(final String svg) => SvgPicture.asset(
-        svg,
-        colorFilter: const ColorFilter.mode(
-          Color(0xFF737373),
-          BlendMode.srcIn,
-        ),
-        width: 18,
-        height: 18,
       );
 }

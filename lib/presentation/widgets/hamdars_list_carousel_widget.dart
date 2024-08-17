@@ -35,13 +35,11 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
             ) =>
                 GestureDetector(
               onTap: () {
-                debugPrint("Print onPageChanged 30: $index");
                 _scrollController.animateToPage(
                   index,
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.fastEaseInToSlowEaseOut,
                 );
-                // _scrollController.jumpToPage(index);
               },
               child: BottomItemWidget(
                 title: state.items[index].name ?? '',
@@ -50,7 +48,6 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 level: state.items[index].hamdarsUserUnitLevelIndex ?? 0,
                 studyTime: state.items[index].sumUserStudy ?? 0,
                 isSelected: index == selectedIndex,
-                // isSelected: false,
               ),
             ),
             itemCount: state.items.length,
@@ -58,29 +55,18 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
               autoPlay: false,
               enlargeCenterPage: true,
               viewportFraction: 0.4,
-              // aspectRatio: 5,
               initialPage: 0,
-              // enlargeFactor: 0.4,
               height: 181,
               clipBehavior: Clip.hardEdge,
               padEnds: true,
-              onScrolled: (final double? value) {
-                debugPrint("Print onPageChanged 20: $value");
-              },
               animateToClosest: true,
               disableCenter: false,
-              // enlargeStrategy: CenterPageEnlargeStrategy.zoom,
               enableInfiniteScroll: false,
               onPageChanged: (
                 final int index,
                 final CarouselPageChangedReason reason,
-              ) {
-                setState(() {
-                  selectedIndex = index;
-                });
-                debugPrint("Print onPageChanged 10: $index");
-                debugPrint("Print onPageChanged 12: $reason");
-              },
+              ) =>
+                  setState(() => selectedIndex = index),
               pageSnapping: true,
               scrollDirection: Axis.horizontal,
             ),

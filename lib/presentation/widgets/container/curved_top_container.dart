@@ -32,26 +32,4 @@ class CurvedTopContainer extends StatelessWidget {
           ),
         ),
       );
-
-  @override
-  Widget build2(final BuildContext context) => Stack(
-        alignment: Alignment.bottomCenter,
-        fit: StackFit.passthrough,
-        children: [
-          CustomPaint(
-            size: Size(double.infinity, maxHeight),
-            painter: CurvedContainerPainter(
-              minHeight: minHeight,
-              maxHeight: maxHeight,
-              color: color,
-            ),
-          ),
-          Positioned.fill(
-            child: Padding(
-              padding: padding ?? EdgeInsets.zero,
-              child: child,
-            ),
-          ),
-        ],
-      );
 }

@@ -7,17 +7,10 @@ import 'package:hamdars/core/widget/bottom_sheet.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/presentation/screens/settings_screen.dart';
-import 'package:hamdars/presentation/widgets/centered_list_view.dart';
 import 'package:hamdars/presentation/widgets/container/curved_top_container.dart';
-import 'package:hamdars/presentation/widgets/container/custom_container.dart';
-import 'package:hamdars/presentation/widgets/hamdars_list_bottom_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_carousel_widget.dart';
-import 'package:hamdars/presentation/widgets/hamdars_list_custom_widget.dart';
-import 'package:hamdars/presentation/widgets/hamdars_list_page_view_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_widget.dart';
 import 'package:hamdars/presentation/widgets/add_transaction_widget.dart';
-
-import '../widgets/hamdars_list_bottom_widget_4.dart';
 
 class HamDarsScreen extends StatefulWidget {
   const HamDarsScreen({super.key});
@@ -53,6 +46,7 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
       child: GestureDetector(
         onTap: context.hideKeyboard,
         child: Scaffold(
+          extendBody: true,
           appBar: AppBar(
             // title: const Text('Transactions'),
             title: Text(S.of(context).hamdars),
@@ -77,11 +71,7 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
               ),
             ],
           ),
-          body: BlocProvider(
-            create: (final BuildContext context) =>
-                context.read<HamDarsCubit>()..loadMain(),
-            child: const HamdarsListWidget(),
-          ),
+          body: const HamdarsListWidget(),
           bottomSheet: CurvedTopContainer(
             minHeight: 40.h,
             maxHeight: 181.h,
@@ -91,22 +81,6 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
               create: (final BuildContext context) =>
                   context.read<HamDarsCubit>()..loadMain(),
               child: const HamdarsListCarouselWidget(),
-            ),
-          ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.startDocked,
-          floatingActionButton: GestureDetector(
-            key: const ValueKey('add_one_transaction'),
-            onLongPress: () => context.navToNamed('/add_transaction'),
-            child: FloatingActionButton(
-              onPressed: () {
-                BottomSheetWidget().show(
-                  context,
-                  S.of(context).add_transaction,
-                  const AddTransactionWidget(),
-                );
-              },
-              child: const Icon(Icons.add),
             ),
           ),
         ),

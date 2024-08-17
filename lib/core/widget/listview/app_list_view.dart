@@ -66,8 +66,7 @@ class AppListView<T> extends StatelessWidget {
           );
   }
 
-  Expanded _listView() {
-    return Expanded(
+  Expanded _listView() => Expanded(
       child: SizedBox(
         height: itemHeight,
         child: FadingEdgeScrollView.fromListView(
@@ -77,7 +76,7 @@ class AppListView<T> extends StatelessWidget {
             shrinkWrap: shrinkWrap,
             controller: scrollController ?? ScrollController(),
             padding: padding ??
-                EdgeInsetsDirectional.only(
+                const EdgeInsetsDirectional.only(
                   top: Utils.mediumSize,
                   bottom: Utils.semiGiantSize,
                   start: Utils.largeSize,
@@ -103,7 +102,6 @@ class AppListView<T> extends StatelessWidget {
         ),
       ),
     );
-  }
 
   Widget simple(final BuildContext context) {
     if (state == CurrentState.loading) {
@@ -149,9 +147,8 @@ class AppListView<T> extends StatelessWidget {
     );
   }
 
-  Widget _loadMoreLoading() {
-    return Padding(
-      padding: const EdgeInsetsDirectional.only(bottom: Utils.largeSize),
+  Widget _loadMoreLoading() => const Padding(
+      padding: EdgeInsetsDirectional.only(bottom: Utils.largeSize),
       child: SizedBox(
         width: Utils.semiGiantSize,
         height: Utils.semiGiantSize,
@@ -162,5 +159,4 @@ class AppListView<T> extends StatelessWidget {
         ),
       ),
     );
-  }
 }

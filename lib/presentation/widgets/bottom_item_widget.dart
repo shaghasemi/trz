@@ -53,15 +53,15 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
         child: AnimatedContainer(
           duration: duration,
           curve: curve,
-          width: 88,
-          height: 168,
+          width: 88.w,
+          height: 168.h,
           decoration: widget.isSelected
-              ? const ShapeDecoration(
-                  color: Color(0x14758BEB),
+              ?  ShapeDecoration(
+                  color: const Color(0x14758BEB),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(44),
-                      topRight: Radius.circular(44),
+                      topLeft: Radius.circular(44.r),
+                      topRight: Radius.circular(44.r),
                     ),
                   ),
                 )
@@ -77,8 +77,8 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                   alignment: Alignment.center,
                   children: [
                     SizedBox(
-                      width: 73.w,
-                      height: 73.w,
+                      width: 81.w,
+                      height: 81.w,
                       child: CircularProgressIndicator(
                         value: widget.progress.toDouble(),
                         color: const Color(0xFF758BEB),
@@ -89,27 +89,12 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                     ),
                     SvgPicture.network(
                       widget.iconPath,
-                      width: widget.isSelected ? 66.w : 42.w,
-                      height: widget.isSelected ? 66.w : 42.w,
+                      width: widget.isSelected ? 73.w : 66.w,
+                      height: widget.isSelected ? 73.w : 66.w,
                     ),
                   ],
                 ),
               ),
-              /*SvgPicture.network(
-                iconPath,
-                width: isSelected ? 66.w : 42.w,
-                height: isSelected ? 66.w : 42.w,
-              ),*/
-              /*AnimatedContainer(
-                duration: Duration(milliseconds: 400),
-                width: isSelected ? 90.w : 60.w,
-                height: isSelected ? 90.h : 60.h,
-                child: SvgPicture.network(
-                  iconPath,
-                  width: isSelected ? 52.w : 40.w,
-                  height: isSelected ? 52.h : 40.h,
-                ),
-              ),*/
               if (widget.isSelected) ...[
                 SizedBox(height: 4.h),
                 Container(
