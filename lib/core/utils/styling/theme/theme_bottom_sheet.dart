@@ -5,7 +5,7 @@ BottomSheetThemeData bottomSheetTheme({
   required final String languageCode,
 }) =>
     BottomSheetThemeData(
-      backgroundColor: whiteColor1,
+      backgroundColor: Colors.transparent,
       // backgroundColor: Colors.transparent,
       // modalBackgroundColor: Colors.red,
     );

@@ -48,6 +48,8 @@ class HamDarsCubit extends Cubit<HamDarsState> {
 
   void changeSelection(final int index) {
     debugPrint("Print HamDarsCubit 50: $index");
+    debugPrint(
+        "Print HamDarsCubit 52: ${state.items[state.selectedIndex!].hamdarsQUnitLearningContentDtos!.length}");
     emit(state.copyWith(selectedIndex: index));
   }
 

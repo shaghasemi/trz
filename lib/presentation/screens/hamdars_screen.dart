@@ -14,7 +14,7 @@ class HamDarsScreen extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        extendBody: true,
+        extendBody: false,
         appBar: AppBar(
           title: Text(S.of(context).hamdars),
           actions: [
