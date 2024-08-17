@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("زبان"),
         "languages": MessageLookupByLibrary.simpleMessage("زبان‌ها"),
         "level": MessageLookupByLibrary.simpleMessage("سطح"),
+        "noItemInThisCategory": MessageLookupByLibrary.simpleMessage(
+            "در این دسته آیتمی وجود ندارد"),
         "noSelection": MessageLookupByLibrary.simpleMessage("No Selection"),
         "noTransactions":
             MessageLookupByLibrary.simpleMessage("تراکنشی مشاهده نشد"),

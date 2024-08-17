@@ -50,7 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "income": MessageLookupByLibrary.simpleMessage("Income"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-        "level": MessageLookupByLibrary.simpleMessage("سطح"),
+        "level": MessageLookupByLibrary.simpleMessage("Level"),
+        "noItemInThisCategory": MessageLookupByLibrary.simpleMessage(
+            "No item was found in this category"),
         "noSelection": MessageLookupByLibrary.simpleMessage("No Selection"),
         "noTransactions":
             MessageLookupByLibrary.simpleMessage("No transactions"),
@@ -66,11 +68,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectSubcategoryValidation":
             MessageLookupByLibrary.simpleMessage("Please select a subcategory"),
         "serverDownDesc": MessageLookupByLibrary.simpleMessage(
-            "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید"),
+            "Error retrieving information.Please try again."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "toman": MessageLookupByLibrary.simpleMessage("Toman"),
         "transactions": MessageLookupByLibrary.simpleMessage("Transactions"),
         "updateTransaction":
-            MessageLookupByLibrary.simpleMessage("بروزرسانی تراکنش")
+            MessageLookupByLibrary.simpleMessage("Update Transaction")
       };
 }

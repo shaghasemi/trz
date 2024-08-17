@@ -36,5 +36,6 @@
   "serverDownDesc": "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید",
   "level": "سطح",
   "refresh": "رفرش",
-  "noSelection": "No Selection"
+  "noSelection": "No Selection",
+  "noItemInThisCategory": "در این دسته آیتمی وجود ندارد"
 }

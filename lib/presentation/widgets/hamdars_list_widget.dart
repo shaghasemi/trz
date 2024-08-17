@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/widgets/list_item_widget.dart';
-import 'package:skeletons/skeletons.dart';
 
 class HamdarsListWidget extends StatefulWidget {
   const HamdarsListWidget({super.key});
@@ -60,6 +59,11 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
           } else if (state.selectedIndex == null) {
             return Center(
               child: Text(S.of(context).noSelection),
+            );
+          } else if (state.items[state.selectedIndex!]
+              .hamdarsQUnitLearningContentDtos!.isEmpty) {
+            return Center(
+              child: Text(S.of(context).noItemInThisCategory),
             );
           }
           return ListView.separated(

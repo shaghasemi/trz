@@ -419,6 +419,16 @@ class S {
       args: [],
     );
   }
+
+  /// `در این دسته آیتمی وجود ندارد`
+  String get noItemInThisCategory {
+    return Intl.message(
+      'در این دسته آیتمی وجود ندارد',
+      name: 'noItemInThisCategory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
