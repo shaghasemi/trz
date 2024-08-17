@@ -25,7 +25,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
   }
 
   @override
-  void didUpdateWidget(covariant HamdarsListWidget oldWidget) {
+  void didUpdateWidget(covariant final HamdarsListWidget oldWidget) {
     debugPrint("Print HamdarsListWidget 70");
     super.didUpdateWidget(oldWidget);
   }

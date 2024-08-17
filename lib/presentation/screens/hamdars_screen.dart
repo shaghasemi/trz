@@ -56,6 +56,7 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
             ),
           ],
         ),
+        // ignore: prefer_const_constructors
         body: HamdarsListWidget(),
         bottomSheet: CurvedTopContainer(
           minHeight: 40.h,

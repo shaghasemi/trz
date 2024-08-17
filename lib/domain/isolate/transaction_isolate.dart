@@ -26,10 +26,7 @@ void _transactionIsolate(final SendPort sendPort) {
 
       // Simulate heavy processing
       final List<Transaction> processedTransactions = transactions.map(
-        (final Transaction transaction) {
-          // Add processing logic here
-          return transaction;
-        },
+        (final Transaction transaction) => transaction,
       ).toList();
 
       send.send(processedTransactions);

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LanguageRepository {
-  Locale getPreferredLocale() {
-    return const Locale('fa');
-    // Implement your logic to get the preferred locale from persistent storage
-  }
+  Locale getPreferredLocale() => const Locale('fa');
 
-  void savePreferredLocale(Locale locale) {
-    // Implement your logic to save the locale to persistent storage
-  }
+  void savePreferredLocale(final Locale locale) {}
 }

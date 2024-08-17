@@ -61,7 +61,11 @@ class BottomSheetWidget {
         ),
       ),
       builder: (final BuildContext context) => PopScope(
-        onPopInvoked: (final bool didPop) async => Future(() => true),
+        onPopInvokedWithResult: (
+          final bool didPop,
+          final Object? result,
+        ) async =>
+            Future(() => true),
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: SingleChildScrollView(

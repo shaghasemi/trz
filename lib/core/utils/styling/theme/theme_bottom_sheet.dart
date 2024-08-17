@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import '../color.dart';
 
 BottomSheetThemeData bottomSheetTheme({
   required final String languageCode,
 }) =>
-    BottomSheetThemeData(
+    const BottomSheetThemeData(
       backgroundColor: Colors.transparent,
-      // backgroundColor: Colors.transparent,
-      // modalBackgroundColor: Colors.red,
     );
