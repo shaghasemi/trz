@@ -1,12 +1,15 @@
 import 'package:context_menus/context_menus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hamdars/core/utils/ext.dart';
 import 'package:hamdars/core/widget/bottom_sheet.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/presentation/screens/settings_screen.dart';
 import 'package:hamdars/presentation/widgets/centered_list_view.dart';
+import 'package:hamdars/presentation/widgets/container/curved_top_container.dart';
+import 'package:hamdars/presentation/widgets/container/custom_container.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_bottom_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_carousel_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_custom_widget.dart';
@@ -79,18 +82,15 @@ class _HamDarsScreenState extends State<HamDarsScreen> {
                 context.read<HamDarsCubit>()..loadMain(),
             child: const HamdarsListWidget(),
           ),
-          bottomSheet: Container(
-            // color: Colors.blue.shade400,
-            // height: 200,
-            width: double.maxFinite,
+          bottomSheet: CurvedTopContainer(
+            minHeight: 40.h,
+            maxHeight: 181.h,
+            // padding:EdgeInsets.zero,
+            color: Colors.white,
             child: BlocProvider(
               create: (final BuildContext context) =>
                   context.read<HamDarsCubit>()..loadMain(),
-              // child: CenteredListView(),
-              // child: const HamdarsListCustomWidget(),
-              // child: const HamdarsListPageViewWidget(),
               child: const HamdarsListCarouselWidget(),
-              // child: const HamdarsListBottomWidget(),
             ),
           ),
           floatingActionButtonLocation:
