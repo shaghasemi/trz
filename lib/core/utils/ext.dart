@@ -40,3 +40,25 @@ extension ContextUtil on BuildContext {
 
   double get height => MediaQuery.of(this).size.height;
 }
+
+extension IntUtil on int {
+  String toStudyTime() {
+    final String hours = (this ~/ 60).toString().padLeft(2, '0');
+    final String minutes = (this % 60).toString().padLeft(2, '0');
+    return '$hours:$minutes';
+  }
+}
+
+extension ColorExtension on String {
+  Color toColor() {
+    String hexColor = replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF$hexColor";
+    }
+    if (hexColor.length == 8) {
+      return Color(int.parse("0x$hexColor"));
+    } else {
+      return Colors.black54;
+    }
+  }
+}

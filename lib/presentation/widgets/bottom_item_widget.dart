@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hamdars/app/app_assets.dart';
+import 'package:hamdars/core/utils/ext.dart';
 import 'package:hamdars/generated/l10n.dart';
 
 class BottomItemWidget extends StatefulWidget {
@@ -152,7 +153,7 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                     ),
                     SizedBox(width: 6.w),
                     Text(
-                      _formatStudyTime(widget.studyTime),
+                      widget.studyTime.toStudyTime(),
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: const Color(0xFF404040),
@@ -169,9 +170,5 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
         ),
       );
 
-  String _formatStudyTime(final int studyTime) {
-    final String hours = (studyTime ~/ 60).toString().padLeft(2, '0');
-    final String minutes = (studyTime % 60).toString().padLeft(2, '0');
-    return '$hours:$minutes';
-  }
+
 }

@@ -7,4 +7,5 @@ class AppAssets {
   static String pinned = "assets/svg/pinned.svg";
   static String duration = "assets/svg/duration.svg";
   static String fasl = "assets/svg/fasl.svg";
+  static String back = "assets/svg/back.svg";
 }

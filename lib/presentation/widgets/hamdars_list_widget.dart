@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hamdars/app/app_assets.dart';
+import 'package:hamdars/core/utils/ext.dart';
 import 'package:hamdars/core/widget/loading_widget.dart';
 import 'package:hamdars/domain/entities/hamdars.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
@@ -18,19 +19,13 @@ class HamdarsListWidget extends StatefulWidget {
 class _HamdarsListWidgetState extends State<HamdarsListWidget> {
   @override
   Widget build(final BuildContext context) =>
-      BlocConsumer<HamDarsCubit, HamDarsState>(
-        listener: (
-          final BuildContext context,
-          final HamDarsState state,
-        ) {
-          debugPrint("Print _HamdarsListWidgetState 10:");
-          setState(() {});
-        },
+      BlocBuilder<HamDarsCubit, HamDarsState>(
         builder: (
           final BuildContext context,
           final HamDarsState state,
         ) {
-          debugPrint("Print _HamdarsListWidgetState 20:");
+          debugPrint(
+              "Print _HamdarsListWidgetState 20: ${state.selectedIndex}");
           if (state.isLoading) {
             return Center(
               child: LoadingWidget().circular(),
@@ -40,7 +35,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
               child: Text(S.of(context).noTransactions),
             );
           } else if (state.selectedIndex == null) {
-            return Center(
+            return const Center(
               child: Text("No Selection"),
             );
           }
@@ -48,7 +43,9 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
             // controller: _scrollController,
             reverse: false,
             physics: const BouncingScrollPhysics(),
-            cacheExtent: 50,
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            // shrinkWrap: true,
+            // cacheExtent: 50,
             separatorBuilder: (
               final BuildContext context,
               final int index,
@@ -66,134 +63,122 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
               final HamdarsQUnitLearningContentDtos item = state
                   .items[state.selectedIndex!]
                   .hamdarsQUnitLearningContentDtos![index];
-              /*return Container(
-                height: 80,
-                color: Colors.red,
-              );*/
-              return Container(
+              return SizedBox(
                 height: 64.h,
+                width: double.infinity,
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      child: SvgPicture.asset(
-                        AppAssets.fasl,
+                      width: 64.w,
+                      height: 64.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: const Color(0x26000000),
+                          // color: const Color(0xFFEDEDED),
+                          width: 6.w,
+                        ),
+                      ),
+                      child: Container(
+                        width: 30.w,
+                        height: 30.w,
+                        padding: EdgeInsets.all(6.w),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            // color: const Color(0x26000000),
+                            color: const Color(0xFFEDEDED),
+                            width: 4.w,
+                          ),
+                        ),
+                        child: item.hamdarsQUnitLearningContentTypeIcon != null
+                            ? SvgPicture.network(
+                                item.hamdarsQUnitLearningContentTypeIcon!,
+                                placeholderBuilder:
+                                    (final BuildContext context) =>
+                                        SvgPicture.asset(
+                                  AppAssets.fasl,
+                                ),
+                                colorFilter: ColorFilter.mode(
+                                  (item.hamdarsQUnitLearningContentTypeColor ??
+                                          "")
+                                      .toColor(),
+                                  BlendMode.srcIn,
+                                ),
+                                alignment: Alignment.center,
+                              )
+                            : SvgPicture.asset(
+                                AppAssets.fasl,
+                              ),
                       ),
                     ),
-                    Text(item.hamdarsQUnitLearningContentTypeDesc ?? 'aa'),
-                    Container(
-                      width: 236,
-                      height: 64,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 236,
-                            height: 64,
-                            decoration: ShapeDecoration(
-                              color: Color(0x14758BEB),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          right: 12.w,
+                          left: 12.w,
+                          top: 7.h,
+                          bottom: 7.h,
+                        ),
+                        decoration: ShapeDecoration(
+                          color: const Color(0x14758BEB),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
-                          Text(
-                            'فصل چهارم',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'IRANYekanXVFaNum',
-                              fontWeight: FontWeight.w500,
-                              height: 0,
-                            ),
-                          ),
-                          Container(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '۰0:0۰',
-                                  textAlign: TextAlign.right,
+                                  item.hamdarsQUnitLearningContentTypeDesc ??
+                                      '',
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(
+                                    color: Color(0xFF404040),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                                SizedBox(height: 16.h),
+                                Text(
+                                  "LLL",
+                                  // item.hamdarsQUnitLearningContentTypeIcon.toStudyTime(),
+                                  textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    color: Color(0xFF3F3F3F),
-                                    fontSize: 10,
-                                    fontFamily: 'IRANYekanXVFaNum',
+                                    color: const Color(0xFF404040),
+                                    fontSize: 10.sp,
                                     fontWeight: FontWeight.w700,
                                     height: 0,
                                   ),
                                 ),
-                                const SizedBox(width: 8),
-                                Container(
-                                  width: 16,
-                                  height: 16,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(),
-                                  child: FlutterLogo(),
-                                ),
                               ],
                             ),
-                          ),
-                          Transform(
-                            transform: Matrix4.identity()
-                              ..translate(0.0, 0.0)
-                              ..rotateZ(-1.57),
-                            child: Container(
-                              width: 24,
-                              height: 24,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(),
-                              child: FlutterLogo(),
+                            // const Spacer(),
+                            /* const Icon(
+                              Icons.chevron_left,
+                              color: Color(0xff404040),
+                              size: 24,
+                            ),*/
+                            SvgPicture.asset(
+                              AppAssets.back,
+                              // color: Color(0xff404040),
+                              width: 12.w,
+                              height: 12.w,
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Container(
-                      width: 64,
-                      height: 64,
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 0,
-                            top: 0,
-                            child: Container(
-                              width: 64,
-                              height: 64,
-                              decoration: ShapeDecoration(
-                                color: Color(0xFFEDEDED),
-                                shape: OvalBorder(),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 8,
-                            top: 8,
-                            child: Container(
-                              width: 48,
-                              height: 48,
-                              decoration: ShapeDecoration(
-                                color: Colors.white,
-                                shape: OvalBorder(),
-                                shadows: [
-                                  BoxShadow(
-                                    color: Color(0x26000000),
-                                    blurRadius: 8,
-                                    offset: Offset(0, 1),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
