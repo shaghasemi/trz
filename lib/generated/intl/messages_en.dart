@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "level": MessageLookupByLibrary.simpleMessage("Level"),
+        "noItem": MessageLookupByLibrary.simpleMessage("آیتمی مشاهده نشد"),
         "noItemInThisCategory": MessageLookupByLibrary.simpleMessage(
             "No item was found in this category"),
         "noSelection": MessageLookupByLibrary.simpleMessage("No Selection"),
