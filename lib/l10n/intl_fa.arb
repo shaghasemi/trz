@@ -35,5 +35,6 @@
   "hamdars": "هم\u200cدرس",
   "serverDownDesc": "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید",
   "level": "سطح",
-  "refresh": "رفرش"
+  "refresh": "رفرش",
+  "noSelection": "No Selection"
 }

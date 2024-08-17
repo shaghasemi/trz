@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_await_in_return
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 
 extension ContextUtil on BuildContext {
   Future navToNamed(
@@ -39,6 +40,10 @@ extension ContextUtil on BuildContext {
   double get width => MediaQuery.of(this).size.width;
 
   double get height => MediaQuery.of(this).size.height;
+
+  bool isDirectionRTL() => intl.Bidi.isRtlLanguage(
+        Localizations.localeOf(this).languageCode,
+      );
 }
 
 extension IntUtil on int {

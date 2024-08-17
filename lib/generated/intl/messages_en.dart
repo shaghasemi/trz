@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "income": MessageLookupByLibrary.simpleMessage("Income"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "level": MessageLookupByLibrary.simpleMessage("سطح"),
+        "noSelection": MessageLookupByLibrary.simpleMessage("No Selection"),
         "noTransactions":
             MessageLookupByLibrary.simpleMessage("No transactions"),
         "pin": MessageLookupByLibrary.simpleMessage("Pin"),
@@ -63,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select Subcategory"),
         "selectSubcategoryValidation":
             MessageLookupByLibrary.simpleMessage("Please select a subcategory"),
+        "serverDownDesc": MessageLookupByLibrary.simpleMessage(
+            "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "toman": MessageLookupByLibrary.simpleMessage("Toman"),
         "transactions": MessageLookupByLibrary.simpleMessage("Transactions"),

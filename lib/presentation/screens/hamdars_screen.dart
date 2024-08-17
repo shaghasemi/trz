@@ -9,8 +9,26 @@ import 'package:hamdars/presentation/widgets/container/curved_top_container.dart
 import 'package:hamdars/presentation/widgets/hamdars_list_carousel_widget.dart';
 import 'package:hamdars/presentation/widgets/hamdars_list_widget.dart';
 
-class HamDarsScreen extends StatelessWidget {
+class HamDarsScreen extends StatefulWidget {
   const HamDarsScreen({super.key});
+
+  @override
+  State<HamDarsScreen> createState() => _HamDarsScreenState();
+}
+
+class _HamDarsScreenState extends State<HamDarsScreen> {
+  @override
+  void didChangeDependencies() {
+    debugPrint("Print HamDarsScreen 60");
+    setState(() {});
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant final HamDarsScreen oldWidget) {
+    debugPrint("Print HamDarsScreen 70");
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(final BuildContext context) => Scaffold(
@@ -38,7 +56,7 @@ class HamDarsScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: const HamdarsListWidget(),
+        body: HamdarsListWidget(),
         bottomSheet: CurvedTopContainer(
           minHeight: 40.h,
           maxHeight: 181.h,

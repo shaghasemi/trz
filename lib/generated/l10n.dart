@@ -400,11 +400,21 @@ class S {
     );
   }
 
-  /// `refresh`
+  /// `رفرش`
   String get refresh {
     return Intl.message(
       'رفرش',
       name: 'refresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Selection`
+  String get noSelection {
+    return Intl.message(
+      'No Selection',
+      name: 'noSelection',
       desc: '',
       args: [],
     );

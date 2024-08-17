@@ -50,9 +50,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "income": MessageLookupByLibrary.simpleMessage("درآمد"),
         "language": MessageLookupByLibrary.simpleMessage("زبان"),
         "languages": MessageLookupByLibrary.simpleMessage("زبان‌ها"),
+        "level": MessageLookupByLibrary.simpleMessage("سطح"),
+        "noSelection": MessageLookupByLibrary.simpleMessage("No Selection"),
         "noTransactions":
             MessageLookupByLibrary.simpleMessage("تراکنشی مشاهده نشد"),
         "pin": MessageLookupByLibrary.simpleMessage("پین کردن"),
+        "refresh": MessageLookupByLibrary.simpleMessage("رفرش"),
         "searchInGoogle": MessageLookupByLibrary.simpleMessage("جستجو در گوگل"),
         "select": MessageLookupByLibrary.simpleMessage("انتخاب"),
         "selectCategory": MessageLookupByLibrary.simpleMessage("انتخاب دسته"),
@@ -61,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("انتخاب زیردسته"),
         "selectSubcategoryValidation":
             MessageLookupByLibrary.simpleMessage("لطفا زیردسته را انتخاب کنید"),
+        "serverDownDesc": MessageLookupByLibrary.simpleMessage(
+            "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید"),
         "settings": MessageLookupByLibrary.simpleMessage("تنظیمات"),
         "toman": MessageLookupByLibrary.simpleMessage("تومان"),
         "transactions": MessageLookupByLibrary.simpleMessage("تراکنش‌ها"),

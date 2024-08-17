@@ -17,6 +17,19 @@ class HamdarsListWidget extends StatefulWidget {
 }
 
 class _HamdarsListWidgetState extends State<HamdarsListWidget> {
+
+  @override
+  void didChangeDependencies() {
+    debugPrint("Print HamdarsListWidget 60");
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant HamdarsListWidget oldWidget) {
+    debugPrint("Print HamdarsListWidget 70");
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(final BuildContext context) =>
       BlocBuilder<HamDarsCubit, HamDarsState>(
@@ -24,8 +37,6 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
           final BuildContext context,
           final HamDarsState state,
         ) {
-          debugPrint(
-              "Print _HamdarsListWidgetState 20: ${state.selectedIndex}");
           if (state.isLoading) {
             return Center(
               child: LoadingWidget().circular(),
@@ -35,8 +46,8 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
               child: Text(S.of(context).noTransactions),
             );
           } else if (state.selectedIndex == null) {
-            return const Center(
-              child: Text("No Selection"),
+            return Center(
+              child: Text(S.of(context).noSelection),
             );
           }
           return ListView.separated(
@@ -50,10 +61,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
               final BuildContext context,
               final int index,
             ) =>
-                SizedBox(
-              height: 6.h,
-            ),
-            // itemCount: 60,
+                SizedBox(height: 6.h),
             itemCount: state.items[state.selectedIndex!]
                 .hamdarsQUnitLearningContentDtos!.length,
             itemBuilder: (
@@ -152,16 +160,29 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
                                   ),
                                 ),
                                 SizedBox(height: 16.h),
-                                Text(
-                                  "LLL",
-                                  // item.hamdarsQUnitLearningContentTypeIcon.toStudyTime(),
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: const Color(0xFF404040),
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w700,
-                                    height: 0,
-                                  ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      AppAssets.duration,
+                                      width: 16,
+                                      height: 16,
+                                    ),
+                                    SizedBox(width: 6.w),
+                                    Text(
+                                      0.toStudyTime(),
+                                      // item.hamdarsQUnitLearningContentTypeIcon.toStudyTime(),
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: const Color(0xFF404040),
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w700,
+                                        height: 0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -171,11 +192,18 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
                               color: Color(0xff404040),
                               size: 24,
                             ),*/
-                            SvgPicture.asset(
-                              AppAssets.back,
-                              // color: Color(0xff404040),
-                              width: 12.w,
-                              height: 12.w,
+                            RotatedBox(
+                              /*quarterTurns: Directionality.of(context) ==
+                                      TextDirection.rtl
+                                  ? 0
+                                  : 2,*/
+                              quarterTurns: context.isDirectionRTL() ? 0 : 2,
+                              child: SvgPicture.asset(
+                                AppAssets.back,
+                                // color: Color(0xff404040),
+                                width: 12.w,
+                                height: 12.w,
+                              ),
                             ),
                           ],
                         ),

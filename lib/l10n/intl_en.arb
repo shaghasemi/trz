@@ -34,5 +34,6 @@
   "pin": "Pin",
   "hamdars": "HamDars",
   "serverDownDesc": "امکان دریافت اطلاعات وجود ندارد. لطفا دوباره تلاش کنید",
-  "level": "سطح"
+  "level": "سطح",
+  "noSelection": "No Selection"
 }
