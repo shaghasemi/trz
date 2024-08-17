@@ -41,6 +41,7 @@ class HamDarsCubit extends Cubit<HamDarsState> {
           HamDarsState(
             items: [],
             isLoading: false,
+            selectedIndex: 0,
           ),
         );
 
@@ -49,7 +50,7 @@ class HamDarsCubit extends Cubit<HamDarsState> {
   }
 
   Future<void> loadMain() async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: true, selectedIndex: 0));
     try {
       final List<Hamdars> transactions = await _useCases.loadMain();
       emit(

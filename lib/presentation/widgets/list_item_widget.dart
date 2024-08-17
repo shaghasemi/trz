@@ -26,25 +26,33 @@ class ListItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 64.w,
-              height: 64.w,
+              width: 64.h,
+              height: 64.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: const Color(0x26000000),
-                  width: 6.w,
+                  // color: const Color(0x26000000),
+                  color: const Color(0xFFEDEDED),
+                  width: 5.h,
                 ),
               ),
               child: Container(
-                width: 30.w,
-                height: 30.w,
-                padding: EdgeInsets.all(6.w),
+                // width: 48.h,
+                // height: 48.h,
+                margin: EdgeInsets.all(3.h),
+                padding: EdgeInsets.all(6.h),
                 decoration: BoxDecoration(
+                  color: Colors.white,
+                  // shape: CircleBorder(),
                   shape: BoxShape.circle,
-                  border: Border.all(
-                    color: const Color(0xFFEDEDED),
-                    width: 4.w,
-                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x26000000),
+                      blurRadius: 8.r,
+                      offset: Offset(0.h, 1.h),
+                      spreadRadius: 0,
+                    )
+                  ],
                 ),
                 child: !isLoading &&
                         item != null &&

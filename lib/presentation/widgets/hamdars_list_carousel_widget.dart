@@ -19,7 +19,16 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
 
   @override
   Widget build(final BuildContext context) =>
-      BlocBuilder<HamDarsCubit, HamDarsState>(
+      BlocConsumer<HamDarsCubit, HamDarsState>(
+        listener: (final BuildContext context, final HamDarsState state) {
+          if (state.isLoading) {
+            _scrollController.animateToPage(
+              0,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.fastEaseInToSlowEaseOut,
+            );
+          }
+        },
         builder: (final BuildContext context, final HamDarsState state) {
           if (!state.isLoading && state.items.isEmpty) {
             return Center(

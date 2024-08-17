@@ -14,7 +14,7 @@ dependencies:
 
   #  Internet
   dio: ^5.6.0
-  connectivity: ^3.0.6
+#  connectivity: ^3.0.6
 
   #  Image
   cached_network_image: ^3.4.1

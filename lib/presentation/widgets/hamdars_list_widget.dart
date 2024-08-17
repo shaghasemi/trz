@@ -14,16 +14,6 @@ class HamdarsListWidget extends StatefulWidget {
 
 class _HamdarsListWidgetState extends State<HamdarsListWidget> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
-  void didUpdateWidget(covariant final HamdarsListWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   Widget build(final BuildContext context) =>
       BlocBuilder<HamDarsCubit, HamDarsState>(
         builder: (
@@ -72,7 +62,7 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
               final BuildContext context,
               final int index,
             ) =>
-                SizedBox(height: 6.h),
+                SizedBox(height: 16.h),
             itemCount: state.items[state.selectedIndex!]
                 .hamdarsQUnitLearningContentDtos!.length,
             itemBuilder: (
