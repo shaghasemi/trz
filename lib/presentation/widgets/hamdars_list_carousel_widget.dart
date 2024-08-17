@@ -40,12 +40,16 @@ class _HamdarsListCarouselWidgetState extends State<HamdarsListCarouselWidget> {
                 curve: Curves.fastEaseInToSlowEaseOut,
               ),
               child: BottomItemWidget(
-                title: state.items[index].name ?? '',
+                title: state.isLoading ? '' : state.items[index].name ?? '',
                 progress:
                     state.isLoading ? 0 : state.items[index].progress ?? 0,
-                iconPath: state.items[index].unitIcon ?? '',
-                level: state.items[index].hamdarsUserUnitLevelIndex ?? 0,
-                studyTime: state.items[index].sumUserStudy ?? 0,
+                iconPath:
+                    state.isLoading ? '' : state.items[index].unitIcon ?? '',
+                level: state.isLoading
+                    ? 0
+                    : state.items[index].hamdarsUserUnitLevelIndex ?? 0,
+                studyTime:
+                    state.isLoading ? 0 : state.items[index].sumUserStudy ?? 0,
                 isSelected:
                     index == (state.isLoading ? 0 : state.selectedIndex),
                 isLoading: state.isLoading,
