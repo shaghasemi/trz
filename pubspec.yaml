@@ -22,8 +22,8 @@ dependencies:
   flutter_svg_provider: ^1.0.7
 
   #  ِDatabase
-  objectbox: ^4.0.2
-  objectbox_flutter_libs: ^4.0.2
+#  objectbox: ^4.0.2
+#  objectbox_flutter_libs: ^4.0.2
 
   #  State Management
   flutter_bloc: ^8.1.6
@@ -74,11 +74,8 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
 
-#dependency_overrides:
-#  fading_edge_scrollview: 4.1.1
-
-objectbox:
-  output_dir: data/objectbox/generated
+#objectbox:
+#  output_dir: data/objectbox/generated
 
 flutter:
   uses-material-design: true

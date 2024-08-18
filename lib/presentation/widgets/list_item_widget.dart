@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hamdars/app/app_assets.dart';
 import 'package:hamdars/core/utils/ext.dart';
@@ -18,7 +17,7 @@ class ListItemWidget extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => SizedBox(
-        height: 64.h,
+        height: 64,
         width: double.infinity,
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -26,30 +25,30 @@ class ListItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 64.h,
-              height: 64.h,
+              width: 64,
+              height: 64,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
                   // color: const Color(0x26000000),
                   color: const Color(0xFFEDEDED),
-                  width: 5.h,
+                  width: 5,
                 ),
               ),
               child: Container(
                 // width: 48.h,
                 // height: 48.h,
-                margin: EdgeInsets.all(3.h),
-                padding: EdgeInsets.all(6.h),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.all(3),
+                padding: const EdgeInsets.all(6),
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   // shape: CircleBorder(),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
                       color: Color(0x26000000),
-                      blurRadius: 8.r,
-                      offset: Offset(0.h, 1.h),
+                      blurRadius: 8,
+                      offset: Offset(0, 1),
                       spreadRadius: 0,
                     )
                   ],
@@ -75,28 +74,28 @@ class ListItemWidget extends StatelessWidget {
                       ),
               ),
             ),
-            SizedBox(width: 12.w),
+            const SizedBox(width: 12),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(
-                  right: 12.w,
-                  left: 12.w,
-                  top: 7.h,
-                  bottom: 7.h,
+                padding: const EdgeInsets.only(
+                  right: 12,
+                  left: 12,
+                  top: 7,
+                  bottom: 7,
                 ),
                 decoration: ShapeDecoration(
                   color: const Color(0x14758BEB),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
                 child: isLoading || item == null
                     ? SkeletonLine(
                         style: SkeletonLineStyle(
                           alignment: Alignment.topRight,
-                          height: 16.h,
-                          width: 64.w,
-                          borderRadius: BorderRadius.circular(8.r),
+                          height: 16,
+                          width: 64,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       )
                     : Row(
@@ -119,7 +118,7 @@ class ListItemWidget extends StatelessWidget {
                                   height: 0,
                                 ),
                               ),
-                              SizedBox(height: 16.h),
+                              const SizedBox(height: 16),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -130,14 +129,14 @@ class ListItemWidget extends StatelessWidget {
                                     width: 16,
                                     height: 16,
                                   ),
-                                  SizedBox(width: 6.w),
+                                  const SizedBox(width: 6),
                                   Text(
                                     0.toStudyTime(),
                                     // item.hamdarsQUnitLearningContentTypeIcon.toStudyTime(),
                                     textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: const Color(0xFF404040),
-                                      fontSize: 10.sp,
+                                    style: const TextStyle(
+                                      color: Color(0xFF404040),
+                                      fontSize: 10,
                                       fontWeight: FontWeight.w700,
                                       height: 0,
                                     ),
@@ -150,8 +149,8 @@ class ListItemWidget extends StatelessWidget {
                             quarterTurns: context.isDirectionRTL() ? 0 : 2,
                             child: SvgPicture.asset(
                               AppAssets.back,
-                              width: 12.w,
-                              height: 12.w,
+                              width: 12,
+                              height: 12,
                             ),
                           ),
                         ],

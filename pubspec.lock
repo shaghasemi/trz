@@ -594,18 +594,10 @@ packages:
     source: hosted
     version: "1.0.0"
   objectbox:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: objectbox
       sha256: "0dc4482cf03a4c73294aea31b3e217afd154de1c198c115a6b621c5650f273d0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
-  objectbox_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: objectbox_flutter_libs
-      sha256: edc236d248061998a63b37c64a40b28213c1fcb37986a6609857e75823057072
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"

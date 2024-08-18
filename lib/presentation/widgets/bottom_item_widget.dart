@@ -57,7 +57,7 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
         child: AnimatedContainer(
           duration: duration,
           curve: curve,
-          width: 88.w,
+          width: 88,
           height: 168.h,
           decoration: widget.isSelected
               ? ShapeDecoration(
@@ -75,14 +75,14 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
               AnimatedContainer(
                 duration: duration,
                 curve: curve,
-                width: 88.w,
-                height: 88.w,
+                width: 88,
+                height: 88,
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
                     SizedBox(
-                      width: 81.w,
-                      height: 81.w,
+                      width: 81,
+                      height: 81,
                       child: CircularProgressIndicator(
                         value: widget.progress.toDouble(),
                         color: const Color(0xFF758BEB),
@@ -93,9 +93,9 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                     ),
                     widget.isLoading
                         ? Container(
-                            width: widget.isSelected ? 73.w : 66.w,
-                            height: widget.isSelected ? 73.w : 66.w,
-                            margin: EdgeInsets.all(4.w),
+                            width: widget.isSelected ? 73 : 66,
+                            height: widget.isSelected ? 73 : 66,
+                            margin: const EdgeInsets.all(4),
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xFFF0F0F0),
@@ -103,8 +103,8 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                           )
                         : SvgPicture.network(
                             widget.iconPath,
-                            width: widget.isSelected ? 73.w : 66.w,
-                            height: widget.isSelected ? 73.w : 66.w,
+                            width: widget.isSelected ? 73 : 66,
+                            height: widget.isSelected ? 73 : 66,
                             placeholderBuilder: (final BuildContext context) =>
                                 SvgPicture.asset(
                               AppAssets.fasl,
@@ -114,15 +114,15 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                 ),
               ),
               if (widget.isSelected) ...[
-                SizedBox(height: 4.h),
+                const SizedBox(height: 4),
                 if (widget.isLoading) ...[
-                  SizedBox(height: 8.h),
+                  const SizedBox(height: 8),
                   SkeletonLine(
                     style: SkeletonLineStyle(
                       alignment: Alignment.center,
-                      height: 20.h,
-                      width: 68.w,
-                      borderRadius: BorderRadius.circular(8.r),
+                      height: 20,
+                      width: 68,
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ] else ...[
@@ -136,7 +136,7 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                     decoration: ShapeDecoration(
                       color: const Color(0xFFFFC107),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                     child: Row(
@@ -161,9 +161,9 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                   Text(
                     widget.title,
                     textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: const Color(0xFF1A1A1A),
-                      fontSize: 12.sp,
+                    style: const TextStyle(
+                      color: Color(0xFF1A1A1A),
+                      fontSize: 12,
                       fontWeight: FontWeight.w700,
                       height: 0,
                     ),
@@ -183,9 +183,9 @@ class _BottomItemWidgetState extends State<BottomItemWidget> {
                       Text(
                         widget.studyTime.toStudyTime(),
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: const Color(0xFF404040),
-                          fontSize: 10.sp,
+                        style: const TextStyle(
+                          color: Color(0xFF404040),
+                          fontSize: 10,
                           fontWeight: FontWeight.w700,
                           height: 0,
                         ),
