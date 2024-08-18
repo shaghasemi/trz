@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hamdars/presentation/cubit/hamdars_cubit.dart';
 import 'package:hamdars/generated/l10n.dart';
 import 'package:hamdars/presentation/widgets/list_item_widget.dart';
@@ -24,12 +23,12 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
             return ListView.separated(
               reverse: false,
               physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               separatorBuilder: (
                 final BuildContext context,
                 final int index,
               ) =>
-                  SizedBox(height: 16.h),
+                  const SizedBox(height: 16),
               itemCount: 5,
               itemBuilder: (
                 final BuildContext context,
@@ -57,12 +56,12 @@ class _HamdarsListWidgetState extends State<HamdarsListWidget> {
           return ListView.separated(
             reverse: false,
             physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             separatorBuilder: (
               final BuildContext context,
               final int index,
             ) =>
-                SizedBox(height: 16.h),
+                const SizedBox(height: 16),
             itemCount: state.items[state.selectedIndex!]
                 .hamdarsQUnitLearningContentDtos!.length,
             itemBuilder: (

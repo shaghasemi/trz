@@ -50,6 +50,7 @@ dependencies:
   url_strategy: ^0.3.0
   get_it: ^7.7.0
   url_launcher: ^6.3.0
+  universal_io: ^2.2.2
 
   #  Hot Push
   shorebird_code_push: ^1.1.4
